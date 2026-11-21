@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">矩阵的四个基本子空间</title><desc id="d">列空间与左零空间互相正交，行空间与零空间互相正交。行空间和列空间的维数都是秩，零空间维数由列数减秩得到。</desc>
+<rect x="25" y="35" width="270" height="120" rx="14" fill="#e7f3ef" stroke="#9fc9bd"/><rect x="345" y="35" width="270" height="120" rx="14" fill="#f1eff8" stroke="#c8bfdf"/>
+<rect x="25" y="205" width="270" height="120" rx="14" fill="#fff2eb" stroke="#e6bcae"/><rect x="345" y="205" width="270" height="120" rx="14" fill="#edf3f8" stroke="#b6ccdc"/>
+<g font-family="system-ui" text-anchor="middle"><text x="160" y="78" font-size="20" font-weight="700" fill="#147d78">列空间 C(A)</text><text x="160" y="108" font-size="15" fill="#43565d">位于 Rᵐ，维数 r</text><text x="480" y="78" font-size="20" font-weight="700" fill="#7463a7">左零空间 N(Aᵀ)</text><text x="480" y="108" font-size="15" fill="#43565d">位于 Rᵐ，维数 m − r</text><text x="160" y="248" font-size="20" font-weight="700" fill="#c7684b">行空间 C(Aᵀ)</text><text x="160" y="278" font-size="15" fill="#43565d">位于 Rⁿ，维数 r</text><text x="480" y="248" font-size="20" font-weight="700" fill="#477ba3">零空间 N(A)</text><text x="480" y="278" font-size="15" fill="#43565d">位于 Rⁿ，维数 n − r</text></g>
+<g stroke="#7c898b" stroke-width="2" fill="none"><path d="M295 95H345M295 265H345"/></g><g font-size="13" fill="#52656b" text-anchor="middle"><text x="320" y="84">正交</text><text x="320" y="254">正交</text></g>
+</svg>

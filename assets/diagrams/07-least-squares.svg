@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">最小二乘拟合与残差</title><desc id="d">三个数据点附近有一条拟合直线。每个点到拟合直线的竖直距离是残差，最小二乘选择使残差平方和最小的直线。</desc>
+<g stroke="#e7ece8" stroke-width="1"><path d="M80 40V300M140 40V300M200 40V300M260 40V300M320 40V300M380 40V300M440 40V300M500 40V300M560 40V300M50 60H590M50 120H590M50 180H590M50 240H590M50 300H590"/></g><path d="M55 300H590M80 320V30" stroke="#65777c" stroke-width="2"/>
+<path d="M80 215L560 95" stroke="#147d78" stroke-width="4"/>
+<g stroke="#c7684b" stroke-width="2" stroke-dasharray="5 4"><path d="M140 200V200"/><path d="M260 145V170"/><path d="M380 145V140"/></g>
+<g fill="#c7684b" stroke="#fff" stroke-width="3"><circle cx="140" cy="200" r="8"/><circle cx="260" cy="145" r="8"/><circle cx="380" cy="145" r="8"/></g>
+<g font-size="15" fill="#52656b"><text x="575" y="320">x</text><text x="90" y="35">y</text><text x="400" y="82" fill="#147d78">拟合直线</text><text x="405" y="160" fill="#c7684b">观测点</text></g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">矩阵把网格映射为新的平行四边形网格</title><desc id="d">左侧灰色坐标网格经过矩阵 A 变换后成为右侧倾斜网格。基向量 e1 和 e2 分别映射到矩阵的第一列和第二列。</desc>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#147d78"/></marker></defs>
+<g transform="translate(150 180)" stroke="#cbd5d0" stroke-width="1.2"><path d="M-100-120V120M-50-120V120M0-120V120M50-120V120M100-120V120M-120-100H120M-120-50H120M-120 0H120M-120 50H120M-120 100H120" fill="none"/><path d="M-120 0H120M0-120V120" stroke="#687b80" stroke-width="2"/></g>
+<g transform="translate(485 180)" stroke="#b9d8ce" stroke-width="1.5"><path d="M-120-100L120-100M-120-50L120-50M-120 0L120 0M-120 50L120 50M-120 100L120 100M-100-120L-40 120M-50-120L10 120M0-120L60 120M50-120L110 120M100-120L160 120" fill="none"/><path d="M-120 0L120 0M0-120L60 120" stroke="#687b80" stroke-width="2"/></g>
+<path d="M285 180H350" stroke="#147d78" stroke-width="3" marker-end="url(#a)"/><text x="316" y="158" text-anchor="middle" fill="#147d78" font-size="16" font-weight="700">A</text>
+<g font-size="16" font-weight="700"><text x="150" y="326" text-anchor="middle" fill="#65777c">原空间</text><text x="485" y="326" text-anchor="middle" fill="#147d78">变换后的空间</text></g>
+<path d="M485 180L555 180M485 180L515 120" stroke="#147d78" stroke-width="4" fill="none"/><text x="562" y="184" fill="#147d78" font-size="14">Ae₁</text><text x="518" y="111" fill="#147d78" font-size="14">Ae₂</text>
+</svg>

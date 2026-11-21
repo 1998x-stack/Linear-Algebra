@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">奇异值分解的旋转与伸缩</title><desc id="d">单位圆先经过 V 转置旋转，再经过 Sigma 沿两个正交方向分别伸缩，最后经过 U 旋转，成为一个椭圆。</desc>
+<g fill="none" stroke-width="3"><circle cx="115" cy="170" r="75" stroke="#aab8b4"/><ellipse cx="330" cy="170" rx="105" ry="45" stroke="#147d78"/><ellipse cx="535" cy="170" rx="95" ry="63" stroke="#7463a7"/></g>
+<g font-size="18" font-weight="700" text-anchor="middle"><text x="115" y="285" fill="#52656b">单位圆</text><text x="330" y="285" fill="#147d78">Σ：沿轴伸缩</text><text x="535" y="285" fill="#7463a7">U：旋转输出</text></g>
+<g stroke="#687b80" stroke-width="2"><path d="M210 170H230M222 162L230 170L222 178M440 170H460M452 162L460 170L452 178"/></g>
+<g fill="#52656b" font-size="14" text-anchor="middle"><text x="220" y="145">Vᵀ</text><text x="450" y="145">U</text></g>
+<path d="M330 170L435 170M330 170L330 125" stroke="#147d78" stroke-width="2"/><text x="384" y="160" font-size="13" fill="#147d78">σ₁</text><text x="338" y="126" font-size="13" fill="#147d78">σ₂</text>
+</svg>

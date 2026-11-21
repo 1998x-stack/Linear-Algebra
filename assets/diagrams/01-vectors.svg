@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">两个向量的线性组合</title><desc id="d">在二维坐标系中，向量 u 与 v 按首尾相接相加，得到向量 w。图中标出系数 a 与 b 对结果位置的影响。</desc>
+<defs><marker id="arr-u" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#147d78"/></marker><marker id="arr-v" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#c7684b"/></marker><marker id="arr-w" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="#7463a7"/></marker></defs>
+<g stroke="#e7ece8" stroke-width="1"><path d="M60 40V320M120 40V320M180 40V320M240 40V320M300 40V320M360 40V320M420 40V320M480 40V320M540 40V320M600 40V320M40 60H610M40 120H610M40 180H610M40 240H610M40 300H610"/></g>
+<g stroke="#6b7c80" stroke-width="2"><path d="M45 270H610M100 325V25"/></g>
+<path d="M100 270L310 210" fill="none" stroke="#147d78" stroke-width="4" marker-end="url(#arr-u)"/><text x="275" y="193" fill="#147d78" font-size="20" font-weight="700">u</text>
+<path d="M100 270L190 105" fill="none" stroke="#c7684b" stroke-width="4" marker-end="url(#arr-v)"/><text x="174" y="92" fill="#c7684b" font-size="20" font-weight="700">v</text>
+<path d="M100 270L400 45" fill="none" stroke="#7463a7" stroke-width="4" marker-end="url(#arr-w)"/><text x="410" y="48" fill="#7463a7" font-size="20" font-weight="700">w = au + bv</text>
+<path d="M310 210L400 45" stroke="#c7684b" stroke-width="2" stroke-dasharray="6 5"/><path d="M190 105L400 45" stroke="#147d78" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="100" cy="270" r="5" fill="#1c2d35"/><text x="78" y="294" font-size="14" fill="#52656b">原点</text><text x="580" y="292" font-size="13" fill="#52656b">x</text><text x="112" y="35" font-size="13" fill="#52656b">y</text>
+</svg>

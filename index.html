@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="从几何直觉到严谨推导的中文线性代数可视化课程。">
+<title>Linear Algebra · 线性代数可视化课程</title>
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到课程内容</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="#course">课程</a><a href="#path">学习路径</a><a href="#method">学习方法</a><a href="README.md">仓库说明</a></nav></div></header>
+<main id="main" class="home-shell">
+<section class="home-hero">
+<span class="kicker">VISUAL · RIGOROUS · INTERACTIVE</span>
+<h1>让线性代数<br>变得看得见。</h1>
+<p>从一个向量开始，逐步理解矩阵如何变换空间、方程组如何确定解、特征方向如何显现，最后看见 SVD 如何拆解复杂变换。</p>
+<div class="hero-equation"><span>核心问题</span><math class="math-inline" aria-label="A x 等于 b"><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow></math><span>几何、代数与计算的交汇点</span></div>
+</section>
+<section id="course" class="home-section">
+<h2>八个模块，一条完整学习路线</h2>
+<p class="lead">先建立几何直觉，再建立代数语言；先理解结构，再学习计算。每篇都有独立图示、公式推导、例题、交互实验和自测。</p>
+<div class="module-grid">
+<a class="module-card" href="content/01-vectors/index.html"><span class="module-number">MODULE 01 · FOUNDATIONS</span><h3>向量与线性组合</h3><p>向量不只是数字列表；线性组合让我们描述可达的方向与位置。</p><div class="question">哪些点可以由给定向量组合得到？ →</div></a>
+<a class="module-card" href="content/02-linear-transformations/index.html"><span class="module-number">MODULE 02 · TRANSFORMATIONS</span><h3>矩阵与线性变换</h3><p>矩阵的列记录基向量去了哪里，矩阵乘法记录变换的先后次序。</p><div class="question">矩阵究竟在改变什么？ →</div></a>
+<a class="module-card" href="content/03-linear-systems/index.html"><span class="module-number">MODULE 03 · SOLVING</span><h3>线性方程组与高斯消元</h3><p>把几何交点转成可执行的行变换，理解唯一解、无解与无穷多解。</p><div class="question">为什么消元能找到交点？ →</div></a>
+<a class="module-card" href="content/04-vector-spaces/index.html"><span class="module-number">MODULE 04 · STRUCTURE</span><h3>向量空间、秩与维数</h3><p>列空间、行空间、零空间与左零空间揭示矩阵的完整结构。</p><div class="question">一个矩阵揭示了哪些空间关系？ →</div></a>
+<a class="module-card" href="content/05-determinants/index.html"><span class="module-number">MODULE 05 · GEOMETRY</span><h3>行列式与体积</h3><p>从单位正方形的面积变化，理解可逆性、方向翻转和体积缩放。</p><div class="question">一个数字为什么能表示面积变化？ →</div></a>
+<a class="module-card" href="content/06-eigenvalues/index.html"><span class="module-number">MODULE 06 · INVARIANTS</span><h3>特征值与特征向量</h3><p>找到变换中方向不变的向量，用特征值描述沿该方向的伸缩。</p><div class="question">哪些方向经过变换后仍然共线？ →</div></a>
+<a class="module-card" href="content/07-least-squares/index.html"><span class="module-number">MODULE 07 · PROJECTION</span><h3>正交投影与最小二乘</h3><p>当方程没有精确解时，寻找残差最小且满足正交条件的近似解。</p><div class="question">如何找到离数据最近的解？ →</div></a>
+<a class="module-card" href="content/08-svd/index.html"><span class="module-number">MODULE 08 · DECOMPOSITION</span><h3>奇异值分解与低秩近似</h3><p>任何实矩阵都能拆成两次正交变换与一次轴向伸缩。</p><div class="question">如何拆解一个复杂的线性变换？ →</div></a>
+</div>
+</section>
+<section id="path" class="home-section">
+<h2>知识之间如何连接</h2>
+<p>前四篇回答“矩阵能做什么、解在哪里、空间有多大”；后四篇回答“变换如何改变体积、哪些方向特殊、如何逼近与压缩”。</p>
+<div class="path-line">
+<div class="path-step"><b>01–02 · 建立语言</b>向量、组合、线性映射与矩阵</div>
+<div class="path-step"><b>03–04 · 理解结构</b>消元、秩、基、四个基本子空间</div>
+<div class="path-step"><b>05–06 · 研究变换</b>行列式、特征值与对角化</div>
+<div class="path-step"><b>07–08 · 优化与分解</b>投影、最小二乘、SVD</div>
+</div>
+</section>
+<section id="method" class="home-section">
+<h2>每个模块如何展开</h2>
+<div class="module-grid">
+<div class="module-card"><span class="module-number">01 · INTUITION</span><h3>先问一个好问题</h3><p>从学生已有经验出发，让抽象概念有具体的几何对象。</p></div>
+<div class="module-card"><span class="module-number">02 · VISUAL MODEL</span><h3>让图形承担解释</h3><p>箭头、网格、子空间和投影都对应明确的数学命题。</p></div>
+<div class="module-card"><span class="module-number">03 · MATHEMATICS</span><h3>公式逐步推导</h3><p>解释符号、维度、前提条件；不把公式当成需要背诵的结果。</p></div>
+<div class="module-card"><span class="module-number">04 · VERIFICATION</span><h3>多路径交叉验证</h3><p>通过代入、维数检查、几何解释和反例确认结论。</p></div>
+</div>
+</section>
+<section class="home-section">
+<h2>学习参考</h2>
+<ul class="reference-list">
+<li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT OpenCourseWare · 18.06 Linear Algebra</a>：课程结构、讲义、习题和考试。</li>
+<li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon · Linear Algebra</a>：免费本科教材与证明训练。</li>
+<li><a href="https://www.3blue1brown.com/topics/linear-algebra">3Blue1Brown · Linear Algebra</a>：视觉教学方法参考。</li>
+</ul>
+<p>本课程内容与图示独立编写；参考来源用于核对课程范围与数学约定，不代表原作者为本站背书。</p>
+</section>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 线性代数可视化课程</span><span><a href="README.md">仓库与贡献说明</a> · <a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></span></div></footer>
+<script src="assets/js/site.js" defer></script>
+</body></html>

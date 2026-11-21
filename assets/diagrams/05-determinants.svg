@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">行列式表示有向面积缩放</title><desc id="d">单位正方形经过矩阵变换后成为平行四边形。面积绝对值乘以行列式绝对值，行列式为负时方向翻转。</desc>
+<g stroke="#e7ece8" stroke-width="1"><path d="M70 30V320M130 30V320M190 30V320M250 30V320M310 30V320M370 30V320M430 30V320M490 30V320M550 30V320M40 70H600M40 130H600M40 190H600M40 250H600M40 310H600"/></g>
+<g stroke="#687b80" stroke-width="2"><path d="M40 250H600M130 330V25"/></g>
+<rect x="130" y="130" width="120" height="120" fill="#e7f3ef" stroke="#147d78" stroke-width="3"/><text x="190" y="194" text-anchor="middle" font-size="16" fill="#147d78">面积 1</text>
+<path d="M380 250L500 250L440 70L320 70Z" fill="#f1eff8" stroke="#7463a7" stroke-width="3"/><text x="410" y="165" text-anchor="middle" font-size="18" font-weight="700" fill="#7463a7">|det A| = 1.5</text>
+<path d="M270 190H310" stroke="#c7684b" stroke-width="3"/><path d="M303 182L312 190L303 198" fill="none" stroke="#c7684b" stroke-width="3"/>
+<text x="190" y="290" text-anchor="middle" font-size="15" fill="#52656b">原单位正方形</text><text x="410" y="290" text-anchor="middle" font-size="15" fill="#52656b">变换后的平行四边形</text>
+</svg>

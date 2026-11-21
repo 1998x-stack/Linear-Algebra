@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t d">
+<title id="t">特征向量沿不变方向伸缩</title><desc id="d">矩阵作用在两个特征方向上，向量方向不变但长度按特征值倍数变化。一个方向伸长三倍，另一个方向保持原长。</desc>
+<g stroke="#e7ece8" stroke-width="1"><path d="M70 30V320M130 30V320M190 30V320M250 30V320M310 30V320M370 30V320M430 30V320M490 30V320M550 30V320M40 70H600M40 130H600M40 190H600M40 250H600M40 310H600"/></g><path d="M70 180H590M320 325V25" stroke="#687b80" stroke-width="2"/>
+<path d="M320 180L400 100" stroke="#c7684b" stroke-width="4"/><path d="M320 180L560 -60" stroke="#147d78" stroke-width="4" stroke-dasharray="7 5"/>
+<path d="M320 180L400 260" stroke="#7463a7" stroke-width="4"/><path d="M320 180L400 260" stroke="#7463a7" stroke-width="4" stroke-dasharray="5 4"/>
+<circle cx="320" cy="180" r="5" fill="#1c2d35"/>
+<text x="415" y="92" font-size="17" fill="#147d78" font-weight="700">λ = 3：拉伸</text><text x="410" y="278" font-size="17" fill="#7463a7" font-weight="700">λ = 1：不变</text>
+<text x="75" y="335" font-size="14" fill="#52656b">特征方向上的向量保持共线</text>
+</svg>
