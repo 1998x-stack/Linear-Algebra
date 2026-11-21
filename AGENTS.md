@@ -13,7 +13,8 @@ This repository is a Chinese undergraduate linear-algebra teaching site. Use the
 5. **Typeset equations semantically.** Use MathML Core for substantive expressions. Every `math` has an accurate `aria-label`; display math sits in a keyboard-focusable horizontal scroll region. Never nest MathML inside SVG.
 6. **Make interaction optional.** The static page must remain mathematically complete if JavaScript is disabled. Controls must update a visible mathematical state and have accessible labels.
 7. **Cross-check.** Use at least two of: symbolic derivation, direct substitution, dimension/rank check, geometric interpretation, independent numerical computation, counterexample.
-8. **Maintain the verification ledger.** Keep `references/verification-matrix.md` aligned with worked examples; update exact computations when article examples change.\n9. **Cite learning sources.** Cite MIT 18.06 / Hefferon / other primary educational sources where appropriate. Do not imply a source contains an original illustration or proof that was independently created here.
+8. **Maintain the verification ledger.** Keep `references/verification-matrix.md` aligned with worked examples; update exact computations when article examples change.
+9. **Cite learning sources.** Cite MIT 18.06 / Hefferon / other primary educational sources where appropriate. Do not imply a source contains an original illustration or proof that was independently created here.
 10. **Validate before publishing.** Run `python3 scripts/validate_site.py`, `python3 -m unittest discover -s tests -v`, and (after installing `requirements-dev.txt` plus Chromium) `python3 scripts/browser_smoke.py`. Review screenshots before claiming visual QA.
 
 ## Content standards
