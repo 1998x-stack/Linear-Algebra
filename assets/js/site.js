@@ -53,7 +53,7 @@
         const c = valueOf(root, "c", 1);
         const x = 90 + c * 80, y = 210 - c * 80;
         setLine(root.querySelector("#projection-vector"), 90, 210, x, y);
-        setLine(root.querySelector("#projection-residual"), x, y, 250, 45);
+        setLine(root.querySelector("#projection-residual"), x, y, 250, 210);
         setText(root, "[data-output=projection]", "投影系数 c = " + c.toFixed(2));
       }
       if (kind === "svd") {
