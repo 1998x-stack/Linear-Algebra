@@ -21,6 +21,19 @@ jobs:
         run: python3 scripts/validate_site.py
       - name: Run mathematical and content regression tests
         run: python3 -m unittest discover -s tests -v
+      - name: Install Chromium for browser QA
+        run: |
+          python3 -m pip install -r requirements-dev.txt
+          python3 -m playwright install --with-deps chromium
+      - name: Inspect desktop, mobile, MathML and interactions
+        run: python3 scripts/browser_smoke.py
+      - name: Upload browser screenshots and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: linear-algebra-browser-qa
+          path: reports/browser/
+          if-no-files-found: ignore
 
   deploy:
     if: github.event_name != 'pull_request'
