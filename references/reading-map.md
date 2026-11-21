@@ -12,6 +12,11 @@ Gilbert Strang's [MIT OCW 18.06SC Linear Algebra (Fall 2011)](https://ocw.mit.ed
 - Gilbert Strang, [Lecture Notes for Linear Algebra](https://www-math.mit.edu/~gs/LectureNotes/): useful for linear combinations, dot products, matrix-vector products, column/row spaces, independence, factorizations, and SVD.
 - 3Blue1Brown, [Linear Algebra topic collection](https://www.3blue1brown.com/topics/linear-algebra): a visual pedagogy reference for vectors, span, transformations, determinants, null spaces, dot products, eigenvectors, and abstract vector spaces. The diagrams in this repository are original and must not imitate or reuse its assets.
 
+## Visual and computational benchmarks
+
+- Kenji Hiranabe, [The Art of Linear Algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra): graphic notes organized around CR, LU, QR, eigendecomposition, and SVD. It is a useful benchmark for explaining factorizations visually; this repository draws its own figures and does not reuse those artworks.
+- Fabio Furini, [Linear Algebra lecture notes and computation lab](https://fabiofurini.github.io/linear-algebra/): combines definitions, worked examples, exercises, and an interactive exact-arithmetic lab that exposes intermediate steps for elimination, determinants, inverses, rank, LU, and eigenvalue calculations. It is a useful benchmark for a possible future step-by-step computation lab; the current course focuses first on conceptual visual explanations.
+
 ## Math on the web
 
 - NIST Digital Library of Mathematical Functions, [About MathML](https://dlmf.nist.gov/help/mathml): MathML is a standard representation of mathematical content; MathML Core is designed for browsers.
