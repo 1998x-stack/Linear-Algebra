@@ -83,7 +83,7 @@ python3 scripts/browser_smoke.py
 1. Gilbert Strang, MIT OpenCourseWare, [18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/). 课程覆盖消元、四个基本子空间、正交投影、行列式和特征值等主题。
 2. Jim Hefferon, [Linear Algebra](https://hefferon.net/linearalgebra/). 免费本科教材，包含线性方程组、向量空间、线性映射、行列式和特征值。
 3. 3Blue1Brown, [Essence of Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra). 作为视觉教学方法参考；本项目独立绘制图形并独立撰写讲解。
-4. NIST Digital Library of Mathematical Functions, [About MathML](https://dlmf.nist.gov/help/mathml). MathML 与浏览器数学呈现说明。
+4. Kenji Hiranabe, [The Art of Linear Algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra). 以矩阵分解为主线的图解参考。\n5. Fabio Furini, [Linear Algebra lecture notes and computation lab](https://fabiofurini.github.io/linear-algebra/). 逐步计算与精确算术交互实验参考。\n6. NIST Digital Library of Mathematical Functions, [About MathML](https://dlmf.nist.gov/help/mathml). MathML 与浏览器数学呈现说明。
 
 ## 发布
 
