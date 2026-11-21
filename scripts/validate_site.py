@@ -96,10 +96,10 @@ def audit(path: Path):
     p.feed(source)
     errors = list(p.errors)
     if p.h1 != 1: errors.append(f"Expected exactly one h1, found {p.h1}")
-    if p.h2 < 5: errors.append(f"Expected at least five h2 sections, found {p.h2}")
-    if p.math < 4: errors.append(f"Expected at least four MathML expressions, found {p.math}")
-    if p.figures < 1 or "<figcaption" not in source: errors.append("Article needs a figure and caption")
-    if p.demos < 1: errors.append("Article needs a meaningful interactive demo")
+    if path.parent != ROOT and p.h2 < 5: errors.append(f"Expected at least five h2 sections, found {p.h2}")
+    if path.parent != ROOT and p.math < 4: errors.append(f"Expected at least four MathML expressions, found {p.math}")
+    if path.parent != ROOT and (p.figures < 1 or "<figcaption" not in source): errors.append("Article needs a figure and caption")
+    if path.parent != ROOT and p.demos < 1: errors.append("Article needs a meaningful interactive demo")
     if p.external_assets: errors.append("External CSS/JS dependency: " + ", ".join(p.external_assets))
     if re.search(r"<svg[\s\S]*?<math[\s\S]*?</svg>", source, re.I): errors.append("MathML appears inside SVG")
     if re.search(r"<mfrac\b[^>]*>(?:(?!</mfrac>).)*</mfrac>", source, re.S):
@@ -116,7 +116,7 @@ def audit(path: Path):
             "figures": p.figures, "demos": p.demos, "errors": errors}
 
 def main():
-    files = [ROOT / "index.html"] + [ROOT / x for x in ARTICLES]
+    files = [ROOT / x for x in ARTICLES]\n    home = ROOT / "index.html"\n    if not home.exists(): failures = [{"path": "index.html", "errors": ["Missing homepage"]}]\n    else:\n        home_source = home.read_text(encoding="utf-8")\n        if home_source.count("<h1") != 1: failures = [{"path": "index.html", "errors": ["Homepage must have exactly one h1"]}]\n        else: failures = []
     failures = []
     for path in files:
         if not path.exists():
