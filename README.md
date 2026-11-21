@@ -71,9 +71,12 @@ python3 -m http.server 8000
 
 python3 scripts/validate_site.py
 python3 -m unittest discover -s tests -v
+python3 -m pip install -r requirements-dev.txt
+python3 -m playwright install chromium
+python3 scripts/browser_smoke.py
 ```
 
-建议在 Chromium、Firefox、Safari 中检查数学排版；至少检查 1440px、768px、390px 和 360px 视口。当前仓库的静态验证不等同于跨浏览器视觉验收，未实际运行的检查不会标记为通过。
+建议在 Chromium、Firefox、Safari 中检查数学排版；至少检查 1440px、768px、390px 和 360px 视口。CI 还会用 Playwright/Chromium 检查桌面、390px/360px 手机视口、MathML 命名空间与几何、图片加载和八个交互控件，并保存截图报告。该自动化检查不等同于人工审阅所有浏览器的视觉细节。
 
 ## 参考资料
 
