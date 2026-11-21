@@ -51,7 +51,7 @@
       }
       if (kind === "projection") {
         const c = valueOf(root, "c", 1);
-        const x = 90 + c * 210, y = 210 - c * 105;
+        const x = 90 + c * 80, y = 210 - c * 80;
         setLine(root.querySelector("#projection-vector"), 90, 210, x, y);
         setLine(root.querySelector("#projection-residual"), x, y, 250, 45);
         setText(root, "[data-output=projection]", "投影系数 c = " + c.toFixed(2));
@@ -66,7 +66,7 @@
         const dependent = root.querySelector('[name="dependent"]');
         const isDependent = dependent ? dependent.checked : false;
         const second = root.querySelector("#rank-second");
-        if (second) second.setAttribute("transform", isDependent ? "translate(0 0) scale(2 2)" : "rotate(-35 170 155)");
+        if (second) second.setAttribute("d", isDependent ? "M170 155L260 85" : "M170 155L95 85");
         setText(root, "[data-output=rank]", isDependent ? "相关：张成空间是一条直线，rank = 1" : "无关：张成空间是整个平面，rank = 2");
       }
     };
