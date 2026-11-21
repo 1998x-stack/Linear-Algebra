@@ -4,7 +4,7 @@ This repository is an independently written course. The sources below anchor the
 
 ## Main course spine: MIT 18.06
 
-Gilbert Strang's [MIT OCW 18.06SC Linear Algebra (Fall 2011)](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/) is the primary syllabus cross-check. Its first unit develops (Ax=b), elimination, column space and nullspace, independence, basis, dimension, and the four fundamental subspaces. Its second unit develops orthogonality, projection, least squares, determinants, and eigenvalues. The older [Spring 2010 18.06 lecture index](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/video_galleries/video-lectures/) includes LU, Gram–Schmidt, diagonalization, Markov matrices, and further topics.
+Gilbert Strang's [MIT OCW 18.06SC Linear Algebra (Fall 2011)](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/) is the primary syllabus cross-check. Its first unit develops $Ax=b$, elimination, column space and nullspace, independence, basis, dimension, and the four fundamental subspaces. Its second unit develops orthogonality, projection, least squares, determinants, and eigenvalues. The older [Spring 2010 18.06 lecture index](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/video_galleries/video-lectures/) includes LU, Gram–Schmidt, diagonalization, Markov matrices, and further topics.
 
 ## Conceptual and proof-oriented reading
 
