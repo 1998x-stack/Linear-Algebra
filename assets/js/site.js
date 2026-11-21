@@ -20,7 +20,7 @@
     const update = () => {
       if (kind === "linear-combination") {
         const a = valueOf(root, "a", 1), b = valueOf(root, "b", 1);
-        const x = 180 + 54 * a + 24 * b, y = 165 - 18 * a - 54 * b;
+        const x = 180 + 38 * (a + 2 * b), y = 165 - 38 * (2 * a + b);
         setLine(root.querySelector("#combo-result"), 180, 165, x, y);
         const point = root.querySelector("#combo-point");
         if (point) { point.setAttribute("cx", x); point.setAttribute("cy", y); }
