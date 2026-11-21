@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="多数向量经过矩阵变换后会改变方向，但有些特殊方向仍与原向量共线。特征向量抓住这些不变方向，特征值记录沿该方向的伸缩倍数。">
+<title>06 特征值与特征向量 · Linear Algebra</title>
+<link rel="stylesheet" href="../../assets/css/site.css"></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="../../index.html">课程首页</a><a href="../../README.md">课程说明</a><a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></nav></div></header>
+<div class="page-shell"><aside class="toc" aria-label="文章目录"><p class="toc-title">On this page</p><a href="#question">先提出问题</a><a href="#picture">先看图形</a><a href="#definition">建立数学语言</a><a href="#derive">推导与例题</a><a href="#demo">交互实验</a><a href="#limits">边界与易错点</a><a href="#exercise">自测</a><a href="#references">延伸阅读</a></aside>
+<main id="main" class="article"><header class="article-header"><span class="kicker">MODULE 06 · INVARIANTS</span><h1>特征值与特征向量</h1><p class="dek">多数向量经过矩阵变换后会改变方向，但有些特殊方向仍与原向量共线。特征向量抓住这些不变方向，特征值记录沿该方向的伸缩倍数。</p><div class="meta-row"><span class="meta-pill">概念 · 图解 · 推导</span><span class="meta-pill">可交互实验</span><span class="meta-pill">交叉验证</span></div></header>
+
+<section id="question"><h2>先提出问题：有没有方向经过变换后仍然不拐弯？</h2>
+<p class="lead">想象一个平面经过拉伸和剪切。大多数箭头会改变方向，但某些箭头可能只变长、变短，甚至反向。它们就是特征向量。</p>
+<p>特征向量把一个复杂的线性变换分解为若干个“沿特殊方向的简单伸缩”。如果这些方向足够多且线性无关，矩阵就可以被对角化。</p></section>
+<section id="picture"><h2>先看图形：沿特征方向只改变长度</h2>
+<figure><img src="../../assets/diagrams/06-eigenvalues.svg" alt="矩阵沿两个特征方向分别伸缩"><figcaption>图 1. 特征向量经过矩阵作用后仍在原直线上；特征值决定有向伸缩倍数。负特征值会让向量反向，零特征值会把向量压到零向量。</figcaption></figure>
+<div class="intuition"><span class="label">核心直觉</span>普通向量要描述两个变化：方向变了多少、长度变了多少。特征向量把方向变化消掉，只留下一个标量 λ。</div>
+</section>
+<section id="definition"><h2>建立数学语言：Av=λv</h2>
+<p>对方阵 A，如果存在非零向量 v 和标量 λ 满足：</p>
+<div class="math-equation" role="group" aria-label="特征值与特征向量定义"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="特征值与特征向量定义，可横向滚动"><math display="block" aria-label="特征值与特征向量定义"><mrow><mi>A</mi><mi>v</mi><mo>=</mo><mi>λ</mi><mi>v</mi><mo>,</mo><mspace width="1em"/><mi>v</mi><mo>≠</mo><mn>0</mn></mrow></math></div><div class="step-count">定义 1</div></div>
+<p>那么 λ 是 A 的特征值，v 是对应特征向量。把右边移到左边：</p>
+<div class="math-equation" role="group" aria-label="特征向量的齐次方程"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="特征向量的齐次方程，可横向滚动"><math display="block" aria-label="特征向量的齐次方程"><mrow><mo>(</mo><mi>A</mi><mo>−</mo><mi>λ</mi><mi>I</mi><mo>)</mo><mi>v</mi><mo>=</mo><mn>0</mn></mrow></math></div></div>
+<p>要存在非零解，矩阵 A−λI 必须不可逆，因此：</p>
+<div class="math-equation" role="group" aria-label="特征多项式方程"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="特征多项式方程，可横向滚动"><math display="block" aria-label="特征多项式方程"><mrow><mtext>det</mtext><mo>(</mo><mi>A</mi><mo>−</mo><mi>λ</mi><mi>I</mi><mo>)</mo><mo>=</mo><mn>0</mn></mrow></math></div></div>
+<p>这个方程称为特征方程。解出 λ 后，再求每个 λ 对应的零空间，得到特征向量。</p>
+</section>
+<section id="derive"><h2>推导与例题：从特征方程到对角化</h2>
+<p>取对称矩阵：</p>
+<div class="math-equation" role="group" aria-label="特征值例题矩阵"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="特征值例题矩阵，可横向滚动"><math display="block" aria-label="特征值例题矩阵"><mrow><mi>A</mi><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mn>2</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr></mtable><mo>)</mo></mrow></math></div></div>
+<p>特征方程为 (2−λ)²−1=0，因此 λ=3 或 λ=1。</p>
+<div class="math-equation" role="group" aria-label="特征多项式分解"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="特征多项式分解，可横向滚动"><math display="block" aria-label="特征多项式分解"><mrow><mo>(</mo><mn>2</mn><mo>−</mo><mi>λ</mi><msup><mo>)</mo><mn>2</mn></msup><mo>−</mo><mn>1</mn><mo>=</mo><mo>(</mo><mi>λ</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>(</mo><mi>λ</mi><mo>−</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>0</mn></mrow></math></div></div>
+<p>当 λ=3 时，v₁=(1,1)；当 λ=1 时，v₂=(1,−1)。直接代入检查：</p>
+<div class="math-equation" role="group" aria-label="两个特征对的直接验证"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="两个特征对的直接验证，可横向滚动"><math display="block" aria-label="两个特征对的直接验证"><mtable><mtr><mtd><mi>A</mi><mo>(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>(</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo>)</mo><mo>=</mo><mn>3</mn><mo>(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>)</mo></mtd></mtr><mtr><mtd><mi>A</mi><mo>(</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>(</mo><mn>1</mn><mo>,</mo><mo>−</mo><mn>1</mn><mo>)</mo></mtd></mtr></mtable></math></div></div>
+<p>把两个线性无关特征向量作为 P 的列，得到 P=[[1,1],[1,−1]]，D=diag(3,1)：</p>
+<div class="math-equation" role="group" aria-label="矩阵的对角化"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="矩阵的对角化，可横向滚动"><math display="block" aria-label="矩阵的对角化"><mrow><mi>A</mi><mo>=</mo><mi>P</mi><mi>D</mi><msup><mi>P</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math></div></div>
+<p>于是 A 的高次幂变得简单：Aᵏ=PDᵏP⁻¹。对角矩阵的幂只需分别对角元素取幂。</p>
+<div class="proof"><span class="label">交叉验证</span>特征值之和 3+1=4，等于 trace(A)=2+2；特征值之积 3×1=3，等于 det(A)=4−1=3。再把两个特征对直接代回 Av=λv，结果完全一致。</div>
+</section>
+<section id="demo"><h2>交互实验：沿特征方向伸缩</h2>
+<p>固定方向 v=(1,1)，拖动 λ 观察向量长度的变化。这里展示的是特征向量定义中的标量作用；本篇例题矩阵对应 λ=3 的方向。</p>
+<div class="interactive" data-demo="eigen"><h3>特征方向实验室</h3><label class="control">伸缩倍数 λ <input type="range" name="lambda" min="0" max="3" step=".1" value="3"></label>
+<svg class="demo-svg" viewBox="0 0 360 240" role="img" aria-label="沿斜向特征方向伸缩的箭头"><path d="M25 155H340M170 220V20" stroke="#64777c" stroke-width="1.5"/><path d="M170 155L284 41" stroke="#c7684b" stroke-width="2" stroke-dasharray="5 4"/><line id="eigen-after" x1="170" y1="155" x2="284" y2="41" stroke="#147d78" stroke-width="4"/><circle cx="170" cy="155" r="4" fill="#1c2d35"/></svg>
+<p class="output" data-output="eigen">A v = 3.0 v（方向保持不变）</p></div>
+</section>
+<section id="limits"><h2>边界与易错点</h2><ul><li><strong>特征向量不能是零向量。</strong> 否则 Av=λv 对任何 λ 都成立，无法定义特征方向。</li><li><strong>不是每个实矩阵都能在实数域对角化。</strong> 有的矩阵没有足够的实特征向量；有的需要复数域。</li><li><strong>重复特征值不保证可对角化。</strong> 关键是能否找到足够多线性无关的特征向量。</li><li><strong>特征值和奇异值不同。</strong> 特征值可以为负或复数；实矩阵的奇异值总是非负实数。</li></ul></section>
+<section id="exercise"><h2>自测：快速验证特征向量</h2><div class="exercise"><details><summary>题目：A=[[4,0],[0,−2]] 的标准基向量分别对应什么特征值？</summary><div class="answer">e₁=(1,0) 对应 λ=4；e₂=(0,1) 对应 λ=−2。第二个特征值为负，表示沿该方向反向伸缩两倍。</div></details></div>
+<div class="exercise"><details><summary>题目：矩阵 [[1,1],[0,1]] 是否可对角化？</summary><div class="answer">特征值只有 λ=1，解 (A−I)v=0 得到 y=0，特征空间只有一维，找不到两个线性无关特征向量，因此不可对角化。</div></details></div></section>
+<section id="references"><h2>延伸阅读</h2><ul><li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT 18.06：Eigenvalues and Eigenvectors；Diagonalization and Powers of A</a></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra">3Blue1Brown：Eigenvectors and eigenvalues</a></li><li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon：Eigenvalues and Eigenvectors</a></li></ul></section>
+<nav class="article-nav" aria-label="模块导航"><a href="../05-determinants/index.html"><small>上一模块</small>行列式与体积</a><a href="../07-least-squares/index.html"><small>下一模块</small>正交投影与最小二乘</a></nav>
+</main></div>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 06 / 08</span><span><a href="../../index.html">返回课程首页</a> · <a href="../../references/reading-map.md">参考资料</a></span></div></footer>
+<script src="../../assets/js/site.js" defer></script></body></html>

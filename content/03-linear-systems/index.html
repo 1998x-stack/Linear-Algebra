@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="线性方程组的解，是若干超平面的公共交点。高斯消元把几何问题变成一组保持解集不变的行变换，让我们系统判断唯一解、无解和无穷多解。">
+<title>03 线性方程组与高斯消元 · Linear Algebra</title>
+<link rel="stylesheet" href="../../assets/css/site.css"></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="../../index.html">课程首页</a><a href="../../README.md">课程说明</a><a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></nav></div></header>
+<div class="page-shell"><aside class="toc" aria-label="文章目录"><p class="toc-title">On this page</p><a href="#question">先提出问题</a><a href="#picture">先看图形</a><a href="#definition">建立数学语言</a><a href="#derive">推导与例题</a><a href="#demo">交互实验</a><a href="#limits">边界与易错点</a><a href="#exercise">自测</a><a href="#references">延伸阅读</a></aside>
+<main id="main" class="article"><header class="article-header"><span class="kicker">MODULE 03 · SOLVING</span><h1>线性方程组与高斯消元</h1><p class="dek">线性方程组的解，是若干超平面的公共交点。高斯消元把几何问题变成一组保持解集不变的行变换，让我们系统判断唯一解、无解和无穷多解。</p><div class="meta-row"><span class="meta-pill">概念 · 图解 · 推导</span><span class="meta-pill">可交互实验</span><span class="meta-pill">交叉验证</span></div></header>
+
+<section id="question"><h2>先提出问题：两条直线为什么可能没有交点、交于一点或重合？</h2>
+<p class="lead">一个二元一次方程表示平面上的一条直线。两个方程组成的系统，就是寻找两条直线的公共点。解的数量来自几何关系，而不是求解算法本身。</p>
+<p>代数上写成 Ax=b；几何上是把 A 的列向量按未知数系数组合，看看能否得到 b。消元正是让这个判断更容易执行的系统方法。</p></section>
+<section id="picture"><h2>先看图形：交点就是共同解</h2>
+<figure><img src="../../assets/diagrams/03-linear-systems.svg" alt="两条直线在坐标平面交于点二一"><figcaption>图 1. x+y=3 与 x−y=1 在 (2,1) 相交。每个满足第一条直线的点都满足一个方程；只有交点同时满足两个方程。</figcaption></figure>
+<div class="note"><span class="label">几何分类</span>两条不平行且不重合的直线有一个交点；平行且不同没有公共点；重合则每个线上点都是解。三维及更高维中，方程对应超平面，解集是这些超平面的交。</div>
+</section>
+<section id="definition"><h2>建立数学语言：Ax=b 与增广矩阵</h2>
+<p>把所有未知数放入列向量 x，把方程系数放入矩阵 A，常数项放入 b：</p>
+<div class="math-equation" role="group" aria-label="线性方程组的矩阵形式"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="线性方程组的矩阵形式，可横向滚动"><math display="block" aria-label="线性方程组的矩阵形式"><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow></math></div><div class="step-count">式 1</div></div>
+<p>例如：</p>
+<div class="math-equation" role="group" aria-label="一个二元线性方程组"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="一个二元线性方程组，可横向滚动"><math display="block" aria-label="一个二元线性方程组"><mtable><mtr><mtd><mi>x</mi><mo>+</mo><mi>y</mi><mo>=</mo><mn>3</mn></mtd></mtr><mtr><mtd><mi>x</mi><mo>−</mo><mi>y</mi><mo>=</mo><mn>1</mn></mtd></mtr></mtable></math></div></div>
+<p>增广矩阵把系数与常数并排写出：</p>
+<div class="math-equation" role="group" aria-label="方程组的增广矩阵"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="方程组的增广矩阵，可横向滚动"><math display="block" aria-label="方程组的增广矩阵"><mrow><mo>[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mrow></math></div></div>
+<h3>允许的三种初等行变换</h3><ol><li>交换两行；</li><li>某一行乘以非零常数；</li><li>某一行加上另一行的倍数。</li></ol>
+<p>这些操作等价于把方程重新排序、把等式两边同时乘非零数、或用一个方程替换为它与另一方程的线性组合，因此不会改变解集。</p>
+</section>
+<section id="derive"><h2>推导与例题：把方程组化成阶梯形</h2>
+<p>从增广矩阵开始，第二行减第一行，再把第二行除以 −2：</p>
+<div class="math-equation" role="group" aria-label="高斯消元的中间结果"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="高斯消元的中间结果，可横向滚动"><math display="block" aria-label="高斯消元的中间结果"><mtable><mtr><mtd><mo>[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mtd><mtd><mo>→</mo></mtd><mtd><mo>[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mo>−</mo><mn>2</mn></mtd><mtd><mo>−</mo><mn>2</mn></mtd></mtr></mtable><mo>]</mo></mtd><mtd><mo>→</mo></mtd><mtd><mo>[</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mtd></mtr></mtable></math></div></div>
+<p>最后用第一行减第二行，得到 x=2、y=1。把结果代回原方程：</p>
+<div class="math-equation" role="group" aria-label="解的直接代入验证"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="解的直接代入验证，可横向滚动"><math display="block" aria-label="解的直接代入验证"><mtable><mtr><mtd><mn>2</mn><mo>+</mo><mn>1</mn><mo>=</mo><mn>3</mn></mtd></mtr><mtr><mtd><mn>2</mn><mo>−</mo><mn>1</mn><mo>=</mo><mn>1</mn></mtd></mtr></mtable></math></div></div>
+<div class="proof"><span class="label">解的结构判定</span>系统一致（至少有一个解）当且仅当 rank(A)=rank([A|b])。若这个共同秩等于未知数个数 n，则解唯一；若共同秩小于 n，则有自由变量，解无穷多。</div>
+</section>
+<section id="demo"><h2>交互实验：逐步执行行变换</h2>
+<p>按“下一步”查看每个阶段。每一次操作都对应等价方程变换；最终阶梯形暴露主元位置。</p>
+<div class="interactive" data-stepper><h3>消元过程</h3>
+<div class="step-panel" data-step><span class="step-count">初始增广矩阵</span><p>R₁: x + y = 3；R₂: x − y = 1。</p><pre>[ 1   1 | 3 ]
+[ 1  -1 | 1 ]</pre><p>两个方程都有 x 项，选择第一列作为第一个主元列。</p></div>
+<div class="step-panel" data-step hidden><span class="step-count">消去第二行的 x</span><p>执行 R₂ ← R₂ − R₁。第一列的第二个元素变成 0。</p><pre>[ 1   1 |  3 ]
+[ 0  -2 | -2 ]</pre><p>这一步没有改变解集，只把第二个方程改写为 −2y=−2。</p></div>
+<div class="step-panel" data-step hidden><span class="step-count">主元化为 1</span><p>执行 R₂ ← −R₂/2，再执行 R₁ ← R₁−R₂。</p><pre>[ 1   0 | 2 ]
+[ 0   1 | 1 ]</pre><p>读出 x=2、y=1。两个变量列都是主元列，没有自由变量。</p></div>
+<div class="controls demo-actions"><button type="button" data-step-prev>上一步</button><button type="button" data-step-next>下一步</button><span class="step-count" data-step-count aria-live="polite">步骤 1 / 3</span></div>
+</div>
+</section>
+<section id="limits"><h2>边界与易错点</h2><ul><li><strong>不是所有系统都有解。</strong> 出现 [0 0 … 0 | c] 且 c≠0 时，得到矛盾。</li><li><strong>自由变量不等于“随便选答案”。</strong> 它是解空间维数大于零的结构信息。</li><li><strong>主元数量是秩。</strong> 不是矩阵元素中非零数字的数量。</li><li><strong>数值计算要考虑稳定性。</strong> 浮点算法常用部分选主元，避免除以过小的主元；手算中的精确行变换与数值算法需区分。</li></ul>
+</section>
+<section id="exercise"><h2>自测：三种解的情况</h2><div class="exercise"><details><summary>题目：x+y=2，2x+2y=5 有几个解？</summary><div class="answer">无解。第二行减去第一行的两倍得到 0=1，增广矩阵秩大于系数矩阵秩。</div></details></div>
+<div class="exercise"><details><summary>题目：x+y=2，2x+2y=4 有几个解？</summary><div class="answer">无穷多解。第二个方程是第一个的两倍，只有一个独立约束；可令 y=t、x=2−t。</div></details></div></section>
+<section id="references"><h2>延伸阅读</h2><ul><li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT 18.06：Elimination with Matrices；Solving Ax=b</a></li><li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon：Systems of Linear Equations</a></li></ul></section>
+<nav class="article-nav" aria-label="模块导航"><a href="../02-linear-transformations/index.html"><small>上一模块</small>矩阵与线性变换</a><a href="../04-vector-spaces/index.html"><small>下一模块</small>向量空间、秩与维数</a></nav>
+</main></div>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 03 / 08</span><span><a href="../../index.html">返回课程首页</a> · <a href="../../references/reading-map.md">参考资料</a></span></div></footer>
+<script src="../../assets/js/site.js" defer></script></body></html>

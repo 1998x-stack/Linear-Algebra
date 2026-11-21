@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="行列式不是一个神秘的计算公式。它是线性变换对有向面积或体积的缩放因子；它的正负记录方向，是否为零则揭示变换有没有压扁空间。">
+<title>05 行列式与体积 · Linear Algebra</title>
+<link rel="stylesheet" href="../../assets/css/site.css"></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="../../index.html">课程首页</a><a href="../../README.md">课程说明</a><a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></nav></div></header>
+<div class="page-shell"><aside class="toc" aria-label="文章目录"><p class="toc-title">On this page</p><a href="#question">先提出问题</a><a href="#picture">先看图形</a><a href="#definition">建立数学语言</a><a href="#derive">推导与例题</a><a href="#demo">交互实验</a><a href="#limits">边界与易错点</a><a href="#exercise">自测</a><a href="#references">延伸阅读</a></aside>
+<main id="main" class="article"><header class="article-header"><span class="kicker">MODULE 05 · GEOMETRY</span><h1>行列式与体积</h1><p class="dek">行列式不是一个神秘的计算公式。它是线性变换对有向面积或体积的缩放因子；它的正负记录方向，是否为零则揭示变换有没有压扁空间。</p><div class="meta-row"><span class="meta-pill">概念 · 图解 · 推导</span><span class="meta-pill">可交互实验</span><span class="meta-pill">交叉验证</span></div></header>
+
+<section id="question"><h2>先提出问题：为什么矩阵的数字能告诉我们面积变了多少？</h2>
+<p class="lead">给定一个 2×2 矩阵，把单位正方形的四个顶点全部变换，得到一个平行四边形。它的面积与原来相比缩放了多少？如果方向被翻转，公式又如何记录？</p>
+<p>行列式把这两个信息压缩成一个数：绝对值表示面积或体积的缩放倍数，符号表示方向是否翻转。</p></section>
+<section id="picture"><h2>先看图形：单位正方形变成平行四边形</h2>
+<figure><img src="../../assets/diagrams/05-determinants.svg" alt="单位正方形经过线性变换成为平行四边形"><figcaption>图 1. 线性变换把单位正方形映为由两列向量张成的平行四边形。图示强调面积缩放；实际数值由矩阵列向量的有向面积决定。</figcaption></figure>
+<div class="intuition"><span class="label">几何直觉</span>矩阵的两列就是变换后两条边。平行四边形的面积是底乘高，也等于两列向量组成的 2×2 行列式的绝对值。</div>
+</section>
+<section id="definition"><h2>建立数学语言：从二维有向面积到 n 维体积</h2>
+<p>对于 A=[[a,b],[c,d]]，行列式定义为：</p>
+<div class="math-equation" role="group" aria-label="二阶行列式的计算公式"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="二阶行列式的计算公式，可横向滚动"><math display="block" aria-label="二阶行列式的计算公式"><mrow><mtext>det</mtext><mo>(</mo><mi>A</mi><mo>)</mo><mo>=</mo><mi>a</mi><mi>d</mi><mo>−</mo><mi>b</mi><mi>c</mi></mrow></math></div><div class="step-count">定义 1</div></div>
+<p>例如，列向量 u=(a,c)、v=(b,d) 组成的平行四边形，有向面积就是 ad−bc。若把其中一列翻转方向，符号会改变；几何面积本身不会为负，所以面积缩放倍数是 |det(A)|。</p>
+<h3>行列式与可逆性</h3>
+<p>方阵 A 可逆，当且仅当它没有把空间压扁到更低维；等价条件是行列式非零：</p>
+<div class="math-equation" role="group" aria-label="方阵可逆的行列式判定"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="方阵可逆的行列式判定，可横向滚动"><math display="block" aria-label="方阵可逆的行列式判定"><mrow><mi>A</mi><mtext> 可逆</mtext><mo>⇔</mo><mtext>det</mtext><mo>(</mo><mi>A</mi><mo>)</mo><mo>≠</mo><mn>0</mn></mrow></math></div></div>
+<p>若 det(A)=0，列向量线性相关，二维平面被压到一条直线或一个点；三维空间中则被压到平面、直线或点。</p>
+</section>
+<section id="derive"><h2>推导与例题：一个负行列式代表什么？</h2>
+<p>取：</p>
+<div class="math-equation" role="group" aria-label="负行列式矩阵"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="负行列式矩阵，可横向滚动"><math display="block" aria-label="负行列式矩阵"><mrow><mi>A</mi><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd><mtd><mn>4</mn></mtd></mtr></mtable><mo>)</mo></mrow></math></div></div>
+<p>计算：</p>
+<div class="math-equation" role="group" aria-label="行列式数值"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="行列式数值，可横向滚动"><math display="block" aria-label="行列式数值"><mrow><mtext>det</mtext><mo>(</mo><mi>A</mi><mo>)</mo><mo>=</mo><mn>1</mn><mo>×</mo><mn>4</mn><mo>−</mo><mn>2</mn><mo>×</mo><mn>3</mn><mo>=</mo><mo>−</mo><mn>2</mn></mrow></math></div></div>
+<p>所以单位正方形变换后的面积为 2，方向翻转一次。注意“面积为 2”和“有向面积为 −2”不是矛盾：前者忽略方向，后者保留方向。</p>
+<h3>行变换对行列式的影响</h3><ul><li>交换两行：行列式乘以 −1；</li><li>某一行乘以 c：行列式乘以 c；</li><li>某行加上另一行的倍数：行列式不变。</li></ul>
+<p>因此高斯消元可以用于计算行列式，但每次交换或缩放行时必须记录对行列式的影响。对于三角矩阵，行列式等于对角线元素的乘积。</p>
+<div class="math-equation" role="group" aria-label="行列式的乘法性质"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="行列式的乘法性质，可横向滚动"><math display="block" aria-label="行列式的乘法性质"><mrow><mtext>det</mtext><mo>(</mo><mi>A</mi><mi>B</mi><mo>)</mo><mo>=</mo><mtext>det</mtext><mo>(</mo><mi>A</mi><mo>)</mo><mtext>det</mtext><mo>(</mo><mi>B</mi><mo>)</mo></mrow></math></div></div>
+<div class="proof"><span class="label">交叉验证</span>如果先用 B 变换，面积乘 |det(B)|；再用 A 变换，面积乘 |det(A)|。总缩放倍数是两者相乘，这与 det(AB)=det(A)det(B) 的绝对值关系一致；方向符号也按乘法组合。</div>
+</section>
+<section id="demo"><h2>交互实验：让有向面积翻转</h2>
+<p>使用对角矩阵 A=diag(s,1)。它沿 x 方向缩放 s 倍，因此 det(A)=s。把 s 从正数拖到负数，观察方向翻转；拖到 0，图形退化为线段。</p>
+<div class="interactive" data-demo="determinant"><h3>有向面积实验室</h3><label class="control">水平缩放 s <input type="range" name="scale" min="-1.5" max="1.5" step=".1" value="1"></label>
+<svg class="demo-svg" viewBox="0 0 360 240" role="img" aria-label="随水平缩放改变的平行四边形"><path d="M25 165H340M185 220V20" stroke="#64777c" stroke-width="1.5"/><polygon id="det-shape" points="185,165 253,165 253,101 185,101" fill="#e7f3ef" stroke="#147d78" stroke-width="3"/></svg>
+<p class="output" data-output="det">det(A) = 1.00；有向面积 = 1.00</p></div>
+</section>
+<section id="limits"><h2>边界与易错点</h2><ul><li><strong>行列式只对方阵定义。</strong> 长方形矩阵有秩、奇异值等概念，但没有通常意义下的 det(A)。</li><li><strong>面积使用绝对值。</strong> det(A) 本身是有向面积缩放因子。</li><li><strong>det(A)=0 不等于 A 的所有元素为零。</strong> 只说明列向量线性相关，变换降秩。</li><li><strong>不要把行列式当作数值稳定性的全部。</strong> 接近零的行列式可能提示接近奇异，但数值条件数还取决于尺度与范数。</li></ul></section>
+<section id="exercise"><h2>自测：判断变换是否压扁空间</h2><div class="exercise"><details><summary>题目：A=[[2,4],[1,2]] 的行列式是多少？它可逆吗？</summary><div class="answer">det(A)=2×2−4×1=0，因此不可逆。第二列是第一列的两倍，平面被压到一条直线。</div></details></div>
+<div class="exercise"><details><summary>题目：若 det(A)=−5，面积和方向分别如何变化？</summary><div class="answer">面积放大为原来的 5 倍，方向翻转。对于三维矩阵，对应体积放大 5 倍并改变定向。</div></details></div></section>
+<section id="references"><h2>延伸阅读</h2><ul><li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT 18.06：Properties of Determinants；Determinant Formulas and Cofactors</a></li><li><a href="https://www.3blue1brown.com/topics/linear-algebra">3Blue1Brown：The determinant</a></li><li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon：Determinants</a></li></ul></section>
+<nav class="article-nav" aria-label="模块导航"><a href="../04-vector-spaces/index.html"><small>上一模块</small>向量空间、秩与维数</a><a href="../06-eigenvalues/index.html"><small>下一模块</small>特征值与特征向量</a></nav>
+</main></div>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 05 / 08</span><span><a href="../../index.html">返回课程首页</a> · <a href="../../references/reading-map.md">参考资料</a></span></div></footer>
+<script src="../../assets/js/site.js" defer></script></body></html>

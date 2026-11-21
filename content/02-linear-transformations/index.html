@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="矩阵不只是按行列排列的数字。它是一条变换规则：输入向量，输出新向量；矩阵的每一列，记录了标准基向量经过变换后的位置。">
+<title>02 矩阵与线性变换 · Linear Algebra</title>
+<link rel="stylesheet" href="../../assets/css/site.css"></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="../../index.html">课程首页</a><a href="../../README.md">课程说明</a><a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></nav></div></header>
+<div class="page-shell"><aside class="toc" aria-label="文章目录"><p class="toc-title">On this page</p><a href="#question">先提出问题</a><a href="#picture">先看图形</a><a href="#definition">建立数学语言</a><a href="#derive">推导与例题</a><a href="#demo">交互实验</a><a href="#limits">边界与易错点</a><a href="#exercise">自测</a><a href="#references">延伸阅读</a></aside>
+<main id="main" class="article"><header class="article-header"><span class="kicker">MODULE 02 · TRANSFORMATIONS</span><h1>矩阵与线性变换</h1><p class="dek">矩阵不只是按行列排列的数字。它是一条变换规则：输入向量，输出新向量；矩阵的每一列，记录了标准基向量经过变换后的位置。</p><div class="meta-row"><span class="meta-pill">概念 · 图解 · 推导</span><span class="meta-pill">可交互实验</span><span class="meta-pill">交叉验证</span></div></header>
+
+<section id="question"><h2>先提出问题：一个矩阵如何改变整个平面？</h2>
+<p class="lead">如果矩阵把一个点变成另一个点，它如何知道其他所有点该去哪里？关键不是逐点记忆，而是只要知道基向量去了哪里，就能确定整个线性变换。</p>
+<p>二维平面中的每个向量都能写成标准基 e₁=(1,0)、e₂=(0,1) 的线性组合。线性变换必须保留加法与数乘，因此它的行为完全由这两个基向量的像决定。</p></section>
+<section id="picture"><h2>先看图形：网格整体被搬动和拉伸</h2>
+<figure><img src="../../assets/diagrams/02-transformations.svg" alt="坐标网格经过矩阵变换成为倾斜网格"><figcaption>图 1. 线性变换把直线映为直线、把平行线映为平行线，并且固定原点。网格的每个交点都由同一矩阵规则计算得到。</figcaption></figure>
+<div class="intuition"><span class="label">核心直觉</span>矩阵的两列不是随意的数字：第一列是 T(e₁)，第二列是 T(e₂)。矩阵用这两条“新坐标轴”重建所有输入向量的输出。</div>
+</section>
+<section id="definition"><h2>建立数学语言：线性映射与矩阵</h2>
+<h3>1. 线性变换必须保留两条规则</h3>
+<p>映射 T: Rⁿ→Rᵐ 是线性的，当且仅当对所有向量 u、v 和标量 c：</p>
+<div class="math-equation" role="group" aria-label="线性映射的两条定义性质"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="线性映射的两条定义性质，可横向滚动"><math display="block" aria-label="线性映射的两条定义性质"><mtable><mtr><mtd><mi>T</mi><mo>(</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo>)</mo><mo>=</mo><mi>T</mi><mo>(</mo><mi>u</mi><mo>)</mo><mo>+</mo><mi>T</mi><mo>(</mo><mi>v</mi><mo>)</mo></mtd></mtr><mtr><mtd><mi>T</mi><mo>(</mo><mi>c</mi><mi>u</mi><mo>)</mo><mo>=</mo><mi>c</mi><mi>T</mi><mo>(</mo><mi>u</mi><mo>)</mo></mtd></mtr></mtable></math></div><div class="step-count">定义 1</div></div>
+<p>把两条规则合并，就得到 T(au+bv)=aT(u)+bT(v)。特别地，T(0)=0；所以平移 T(x)=Ax+b 在 b≠0 时不是线性变换。</p>
+<h3>2. 矩阵乘向量：列向量的线性组合</h3>
+<p>设 A 是 m×n 矩阵，x 是 n 维列向量，那么 Ax 是 m 维输出：</p>
+<div class="math-equation" role="group" aria-label="矩阵乘向量的列组合表达"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="矩阵乘向量的列组合表达，可横向滚动"><math display="block" aria-label="矩阵乘向量的列组合表达"><mrow><mi>A</mi><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><msub><mi>a</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><msub><mi>a</mi><mn>2</mn></msub><mo>+</mo><mo>…</mo><mo>+</mo><msub><mi>x</mi><mi>n</mi></msub><msub><mi>a</mi><mi>n</mi></msub></mrow></math></div></div>
+<p>这里 aᵢ 是 A 的第 i 列。换句话说，输入坐标 xᵢ 就是选择第 i 列的权重。</p>
+<div class="math-equation" role="group" aria-label="二维矩阵乘法的坐标形式"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="二维矩阵乘法的坐标形式，可横向滚动"><math display="block" aria-label="二维矩阵乘法的坐标形式"><mrow><mo>(</mo><mtable><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd></mtr><mtr><mtd><mi>c</mi></mtd><mtd><mi>d</mi></mtd></mtr></mtable><mo>)</mo><mo>(</mo><mtable><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr></mtable><mo>)</mo><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi><mi>y</mi></mtd></mtr><mtr><mtd><mi>c</mi><mi>x</mi><mo>+</mo><mi>d</mi><mi>y</mi></mtd></mtr></mtable><mo>)</mo></mrow></math></div></div>
+<h3>3. 矩阵乘法表示复合</h3><p>先做 B，再做 A，输出是 A(Bx)，所以复合矩阵写成 AB。顺序从右向左读：</p>
+<div class="math-equation" role="group" aria-label="矩阵乘法与复合变换"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="矩阵乘法与复合变换，可横向滚动"><math display="block" aria-label="矩阵乘法与复合变换"><mrow><mi>T</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>A</mi><mo>(</mo><mi>B</mi><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>A</mi><mi>B</mi><mo>)</mo><mi>x</mi></mrow></math></div></div>
+</section>
+<section id="derive"><h2>推导与例题：为什么矩阵的列就是基向量的像？</h2>
+<p>设 A=[[2,1],[1,1]]。分别输入 e₁=(1,0)、e₂=(0,1)：</p>
+<div class="math-equation" role="group" aria-label="标准基向量的映射结果"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="标准基向量的映射结果，可横向滚动"><math display="block" aria-label="标准基向量的映射结果"><mtable><mtr><mtd><mi>A</mi><msub><mi>e</mi><mn>1</mn></msub><mo>=</mo><mo>(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>)</mo></mtd></mtr><mtr><mtd><mi>A</mi><msub><mi>e</mi><mn>2</mn></msub><mo>=</mo><mo>(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>)</mo></mtd></mtr></mtable></math></div></div>
+<p>任意输入 x=(x₁,x₂)=x₁e₁+x₂e₂。利用线性性：</p>
+<div class="math-equation" role="group" aria-label="从基向量像推出任意向量的像"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="从基向量像推出任意向量的像，可横向滚动"><math display="block" aria-label="从基向量像推出任意向量的像"><mrow><mi>A</mi><mi>x</mi><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo>(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo>)</mo><mo>=</mo><mo>(</mo><mn>2</mn><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo></mrow></math></div></div>
+<div class="proof"><span class="label">维度检查</span>A 有 2 行、2 列，输入必须有 2 个坐标，输出也有 2 个坐标。一般 m×n 矩阵把 Rⁿ 映到 Rᵐ；矩阵乘法的维度规则正是映射能否复合的检查。</div>
+<p>再看不交换的例子。令 A 为剪切矩阵，B 为逆时针旋转 90° 的矩阵：</p>
+<div class="math-equation" role="group" aria-label="两种变换顺序的结果"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="两种变换顺序的结果，可横向滚动"><math display="block" aria-label="两种变换顺序的结果"><mtable><mtr><mtd><mi>A</mi><mi>B</mi><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>)</mo></mtd></mtr><mtr><mtd><mi>B</mi><mi>A</mi><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mn>0</mn></mtd><mtd><mo>−</mo><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>)</mo></mtd></mtr></mtable></math></div></div>
+<p>两个结果不同：先旋转再剪切，与先剪切再旋转，通常不是同一件事。</p>
+</section>
+<section id="demo"><h2>交互实验：改变剪切量</h2>
+<p>观察水平剪切 A=[[1,s],[0,1]]。它把点 (x,y) 映为 (x+sy,y)。改变 s，网格倾斜程度会改变，但面积不变。</p>
+<div class="interactive" data-demo="matrix"><h3>矩阵变换实验室</h3><label class="control">剪切系数 s <input type="range" name="shear" min="-1.5" max="1.5" step=".1" value=".5"></label>
+<svg class="demo-svg" viewBox="0 0 360 240" role="img" aria-label="剪切矩阵作用于坐标网格"><g transform="translate(180 120)" stroke="#d7e4de" stroke-width="1.5" fill="none"><g id="matrix-grid"><path d="M-140-90V90M-100-90V90M-60-90V90M-20-90V90M20-90V90M60-90V90M100-90V90M140-90V90M-140-90H140M-140-50H140M-140-10H140M-140 30H140M-140 70H140" /></g><path d="M-150 0H150M0-100V100" stroke="#64777c" stroke-width="2"/></g></svg>
+<p><span class="output" data-output="matrix">A = [[1, 0.50], [0, 1]]</span>；<span class="output" data-output="det">det(A) = 1</span></p>
+</div>
+</section>
+<section id="limits"><h2>边界与易错点</h2><ul><li><strong>矩阵与线性变换有关，但不是同一个层次。</strong> 线性变换是映射；矩阵是选定基后对映射的坐标表示。</li><li><strong>矩阵的列对应输入基向量的像。</strong> 采用列向量约定时，不能把行列含义颠倒。</li><li><strong>乘法顺序不能随意交换。</strong> AB 表示先 B 后 A。</li><li><strong>线性映射固定原点。</strong> 带非零平移项的仿射变换不是线性映射。</li></ul></section>
+<section id="exercise"><h2>自测：从矩阵读出变换</h2><div class="exercise"><details><summary>题目：A=[[1,2],[0,1]] 把 e₁、e₂ 分别映到哪里？</summary><div class="answer">A e₁=(1,0)，A e₂=(2,1)。第一列和第二列分别就是两个标准基向量的像。</div></details></div>
+<div class="exercise"><details><summary>题目：为什么一个 3×2 矩阵不能直接乘一个三维列向量？</summary><div class="answer">矩阵有 2 列，输入必须有 2 个分量；它表示从 R² 到 R³ 的映射，输出才是三维向量。</div></details></div></section>
+<section id="references"><h2>延伸阅读</h2><ul><li><a href="https://www.3blue1brown.com/topics/linear-algebra">3Blue1Brown：Linear transformations and matrices；Matrix multiplication as composition</a></li><li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT 18.06：Matrix multiplication and inverse matrices</a></li><li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon：Linear maps and their matrices</a></li></ul></section>
+<nav class="article-nav" aria-label="模块导航"><a href="../01-vectors/index.html"><small>上一模块</small>向量与线性组合</a><a href="../03-linear-systems/index.html"><small>下一模块</small>线性方程组与高斯消元</a></nav>
+</main></div>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 02 / 08</span><span><a href="../../index.html">返回课程首页</a> · <a href="../../references/reading-map.md">参考资料</a></span></div></footer>
+<script src="../../assets/js/site.js" defer></script></body></html>

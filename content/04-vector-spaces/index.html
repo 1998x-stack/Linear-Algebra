@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="矩阵不只是一张数字表。它同时决定四个彼此正交关联的子空间；秩和零度则把输入自由度与输出有效维数精确地联系起来。">
+<title>04 向量空间、秩与维数 · Linear Algebra</title>
+<link rel="stylesheet" href="../../assets/css/site.css"></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="../../index.html">课程首页</a><a href="../../README.md">课程说明</a><a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></nav></div></header>
+<div class="page-shell"><aside class="toc" aria-label="文章目录"><p class="toc-title">On this page</p><a href="#question">先提出问题</a><a href="#picture">先看图形</a><a href="#definition">建立数学语言</a><a href="#derive">推导与例题</a><a href="#demo">交互实验</a><a href="#limits">边界与易错点</a><a href="#exercise">自测</a><a href="#references">延伸阅读</a></aside>
+<main id="main" class="article"><header class="article-header"><span class="kicker">MODULE 04 · STRUCTURE</span><h1>向量空间、秩与维数</h1><p class="dek">矩阵不只是一张数字表。它同时决定四个彼此正交关联的子空间；秩和零度则把输入自由度与输出有效维数精确地联系起来。</p><div class="meta-row"><span class="meta-pill">概念 · 图解 · 推导</span><span class="meta-pill">可交互实验</span><span class="meta-pill">交叉验证</span></div></header>
+
+<section id="question"><h2>先提出问题：为什么有很多列，真正独立的方向却可能很少？</h2>
+<p class="lead">矩阵可以有很多列，但其中一些列可能只是其他列的重复组合。秩告诉我们有多少个真正独立的方向；零空间则记录哪些输入变化完全不会改变输出。</p>
+<p>要理解矩阵，不能只看它把一个向量变成什么，还要同时看它能够输出什么，以及哪些输入会被它压缩掉。</p></section>
+<section id="picture"><h2>先看图形：四个基本子空间成对正交</h2>
+<figure><img src="../../assets/diagrams/04-four-subspaces.svg" alt="列空间、左零空间、行空间、零空间四个子空间关系图"><figcaption>图 1. 对 m×n 矩阵 A，列空间与左零空间位于 Rᵐ，行空间与零空间位于 Rⁿ。每一对分别互为正交补空间；两侧的秩都等于 r。</figcaption></figure>
+<div class="intuition"><span class="label">几何直觉</span>列空间回答“输出能到哪里”；零空间回答“哪些输入会被压成零”。左零空间和行空间则从输出约束与输入约束的角度补全整个图景。</div>
+</section>
+<section id="definition"><h2>建立数学语言：空间、子空间、秩</h2>
+<h3>1. 什么是向量空间？</h3><p>向量空间是一个集合，允许向量相加和数乘，并满足封闭性及相应运算律。除了 Rⁿ，次数不超过 d 的多项式、固定尺寸矩阵也能构成向量空间。</p>
+<p>子空间必须包含零向量，并且对加法和数乘封闭：</p>
+<div class="math-equation" role="group" aria-label="子空间的封闭条件"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="子空间的封闭条件，可横向滚动"><math display="block" aria-label="子空间的封闭条件"><mrow><mi>u</mi><mo>,</mo><mi>v</mi><mo>∈</mo><mi>W</mi><mo>⇒</mo><mi>u</mi><mo>+</mo><mi>v</mi><mo>∈</mo><mi>W</mi><mo>;</mo><mspace width="1em"/><mi>c</mi><mo>∈</mo><mi>ℝ</mi><mo>⇒</mo><mi>c</mi><mi>u</mi><mo>∈</mo><mi>W</mi></mrow></math></div></div>
+<h3>2. 秩与零度</h3><p>矩阵 A 的秩 rank(A) 是列空间的维数，也等于行空间的维数。零度 nullity(A) 是零空间的维数。对于 A∈Rᵐˣⁿ：</p>
+<div class="math-equation" role="group" aria-label="秩-零度定理"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="秩-零度定理，可横向滚动"><math display="block" aria-label="秩-零度定理"><mrow><mtext>rank</mtext><mo>(</mo><mi>A</mi><mo>)</mo><mo>+</mo><mtext>nullity</mtext><mo>(</mo><mi>A</mi><mo>)</mo><mo>=</mo><mi>n</mi></mrow></math></div><div class="step-count">定理 1</div></div>
+<p>注意右边是列数 n，而不是行数 m，因为零空间中的向量是输入向量，属于 Rⁿ。</p>
+</section>
+<section id="derive"><h2>推导与例题：用一个矩阵看见四个空间</h2>
+<p>考虑：</p>
+<div class="math-equation" role="group" aria-label="用于分析四个子空间的矩阵 A"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="用于分析四个子空间的矩阵 A，可横向滚动"><math display="block" aria-label="用于分析四个子空间的矩阵 A"><mrow><mi>A</mi><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>4</mn></mtd><mtd><mn>6</mn></mtd></mtr></mtable><mo>)</mo></mrow></math></div></div>
+<p>第二行是第一行的两倍，三列也都在同一条方向线上，所以 rank(A)=1。列空间为 span{(1,2)}。</p>
+<p>求零空间 Ax=0，只需要解 x+2y+3z=0。令 y=s、z=t，则 x=−2s−3t：</p>
+<div class="math-equation" role="group" aria-label="零空间的参数表达"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="零空间的参数表达，可横向滚动"><math display="block" aria-label="零空间的参数表达"><mrow><mi>x</mi><mo>=</mo><mi>s</mi><mo>(</mo><mo>−</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>)</mo><mo>+</mo><mi>t</mi><mo>(</mo><mo>−</mo><mn>3</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>)</mo></mrow></math></div></div>
+<p>因此 nullity(A)=2，秩-零度定理给出 1+2=3，与 A 的列数相符。</p>
+<p>行空间由 (1,2,3) 张成；左零空间解 Aᵀy=0，得到 y=(-2,1) 的所有倍数。它与列空间正交；同样，零空间中的两个基向量都与行向量 (1,2,3) 正交。</p>
+<div class="proof"><span class="label">交叉验证</span>直接计算 (−2,1,0)·(1,2,3)=0，(−3,0,1)·(1,2,3)=0；并且 (−2,1)ᵀA=(0,0,0)。四个空间的维数分别是 1、2、1、1，符合 R³ 与 R² 的维数分解。</div>
+</section>
+<section id="demo"><h2>交互实验：两条向量是否真的独立？</h2>
+<p>切换第二个向量是否与第一个向量共线。两个向量在 R² 中独立时张成整个平面；相关时只张成一条直线。</p>
+<div class="interactive" data-demo="rank"><h3>秩与张成空间实验室</h3><label class="control"><input type="checkbox" name="dependent"> 让第二个向量与第一个向量相关</label>
+<svg class="demo-svg" viewBox="0 0 360 240" role="img" aria-label="两条向量是否线性相关的平面示意"><path d="M25 155H340M170 220V20" stroke="#718187" stroke-width="1.5"/><path d="M170 155L260 85" stroke="#147d78" stroke-width="4"/><path id="rank-second" d="M170 155L95 85" stroke="#c7684b" stroke-width="4"/><text x="270" y="82" fill="#147d78" font-size="13">v₁</text><text x="70" y="78" fill="#c7684b" font-size="13">v₂</text></svg>
+<p class="output" data-output="rank" aria-live="polite">无关：张成空间是整个平面，rank = 2</p></div>
+</section>
+<section id="limits"><h2>边界与易错点</h2><ul><li><strong>零向量不能属于线性无关组。</strong> 因为 1·0=0 已经给出非平凡线性关系。</li><li><strong>秩不等于列数。</strong> 列数只是输入维数，秩是独立列的最大数量。</li><li><strong>零空间属于输入空间。</strong> 对 m×n 矩阵，N(A) 是 Rⁿ 的子空间。</li><li><strong>行秩等于列秩。</strong> 这是定理，不是因为行和列的数量相同。</li></ul></section>
+<section id="exercise"><h2>自测：用秩-零度判断自由度</h2><div class="exercise"><details><summary>题目：A 是 5×7 矩阵，rank(A)=4，nullity(A) 是多少？</summary><div class="answer">由 rank + nullity = 列数 n，得到 nullity(A)=7−4=3。</div></details></div>
+<div class="exercise"><details><summary>题目：如果 A 的零空间只有零向量，说明什么？</summary><div class="answer">nullity(A)=0，所有列线性无关，rank(A)=n。A 的列数不能超过行数，因此 m≥n；若 A 是方阵，则 A 可逆。</div></details></div></section>
+<section id="references"><h2>延伸阅读</h2><ul><li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT 18.06：Column Space and Nullspace；Independence, Basis and Dimension；The Four Fundamental Subspaces</a></li><li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon：Vector Spaces、Subspaces、Basis and Dimension</a></li></ul></section>
+<nav class="article-nav" aria-label="模块导航"><a href="../03-linear-systems/index.html"><small>上一模块</small>线性方程组与高斯消元</a><a href="../05-determinants/index.html"><small>下一模块</small>行列式与体积</a></nav>
+</main></div>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 04 / 08</span><span><a href="../../index.html">返回课程首页</a> · <a href="../../references/reading-map.md">参考资料</a></span></div></footer>
+<script src="../../assets/js/site.js" defer></script></body></html>

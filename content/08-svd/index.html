@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="特征分解只适用于拥有足够特征向量的方阵；奇异值分解则适用于任意实矩阵。它把变换拆成输入端旋转、坐标轴伸缩和输出端旋转。">
+<title>08 奇异值分解与低秩近似 · Linear Algebra</title>
+<link rel="stylesheet" href="../../assets/css/site.css"></head>
+<body><a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="../../index.html">课程首页</a><a href="../../README.md">课程说明</a><a href="https://github.com/1998x-stack/Linear-Algebra">GitHub</a></nav></div></header>
+<div class="page-shell"><aside class="toc" aria-label="文章目录"><p class="toc-title">On this page</p><a href="#question">先提出问题</a><a href="#picture">先看图形</a><a href="#definition">建立数学语言</a><a href="#derive">推导与例题</a><a href="#demo">交互实验</a><a href="#limits">边界与易错点</a><a href="#exercise">自测</a><a href="#references">延伸阅读</a></aside>
+<main id="main" class="article"><header class="article-header"><span class="kicker">MODULE 08 · DECOMPOSITION</span><h1>奇异值分解与低秩近似</h1><p class="dek">特征分解只适用于拥有足够特征向量的方阵；奇异值分解则适用于任意实矩阵。它把变换拆成输入端旋转、坐标轴伸缩和输出端旋转。</p><div class="meta-row"><span class="meta-pill">概念 · 图解 · 推导</span><span class="meta-pill">可交互实验</span><span class="meta-pill">交叉验证</span></div></header>
+
+<section id="question"><h2>先提出问题：一个任意矩阵能否拆成几个简单动作？</h2>
+<p class="lead">矩阵可能是长方形、不可逆，甚至没有足够的实特征向量。我们仍然希望找到一组正交输入方向，让每个方向经过变换后变成某个正交输出方向，并且只改变长度。</p>
+<p>奇异值分解（SVD）正是这样一种普遍分解。它不要求矩阵是方阵，也不要求矩阵可对角化。</p></section>
+<section id="picture"><h2>先看图形：圆先旋转，再伸缩，最后再旋转</h2>
+<figure><img src="../../assets/diagrams/08-svd.svg" alt="单位圆经过 V 转置、奇异值伸缩和 U 旋转变成椭圆"><figcaption>图 1. SVD 的几何过程：Vᵀ 改变输入坐标方向，Σ 沿互相正交的轴分别伸缩，U 再把结果放入输出空间。圆在中间阶段变成椭圆。</figcaption></figure>
+<div class="intuition"><span class="label">核心直觉</span>任何线性变换都可以选择一套合适的输入正交坐标轴，让矩阵沿这些轴只做伸缩；输出再通过另一套正交坐标轴表示。复杂的剪切与旋转被拆成了三个可理解的步骤。</div>
+</section>
+<section id="definition"><h2>建立数学语言：SVD 的完整结构</h2>
+<p>对任意实矩阵 A∈Rᵐˣⁿ，都存在正交矩阵 U、V 和非负对角形矩阵 Σ，使得：</p>
+<div class="math-equation" role="group" aria-label="奇异值分解定理"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="奇异值分解定理，可横向滚动"><math display="block" aria-label="奇异值分解定理"><mrow><mi>A</mi><mo>=</mo><mi>U</mi><mi>Σ</mi><msup><mi>V</mi><mi>T</mi></msup></mrow></math></div><div class="step-count">定理 1</div></div>
+<p>完整形式中 U 是 m×m 正交矩阵，V 是 n×n 正交矩阵，Σ 是 m×n 的对角形矩阵。Σ 对角线上的非负数 σ₁≥σ₂≥…≥0 称为奇异值。实际计算常使用只保留非零奇异值的紧致形式。</p>
+<h3>奇异向量与奇异值</h3>
+<p>若 vᵢ 是 V 的第 i 列，uᵢ 是 U 的第 i 列，则：</p>
+<div class="math-equation" role="group" aria-label="左右奇异向量的关系"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="左右奇异向量的关系，可横向滚动"><math display="block" aria-label="左右奇异向量的关系"><mrow><mi>A</mi><msub><mi>v</mi><mi>i</mi></msub><mo>=</mo><msub><mi>σ</mi><mi>i</mi></msub><msub><mi>u</mi><mi>i</mi></msub><mo>,</mo><mspace width="1em"/><msup><mi>A</mi><mi>T</mi></msup><msub><mi>u</mi><mi>i</mi></msub><mo>=</mo><msub><mi>σ</mi><mi>i</mi></msub><msub><mi>v</mi><mi>i</mi></msub></mrow></math></div></div>
+<p>奇异值的平方是 AᵀA 的特征值：</p>
+<div class="math-equation" role="group" aria-label="奇异值与 A 转置 A 的特征值关系"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="奇异值与 A 转置 A 的特征值关系，可横向滚动"><math display="block" aria-label="奇异值与 A 转置 A 的特征值关系"><mrow><msub><mi>σ</mi><mi>i</mi></msub><mo>=</mo><msqrt><msub><mi>λ</mi><mi>i</mi></msub><mo>(</mo><msup><mi>A</mi><mi>T</mi></msup><mi>A</mi><mo>)</mo></msqrt></mrow></math></div></div>
+</section>
+<section id="derive"><h2>推导与例题：把一个矩阵压缩成最重要的方向</h2>
+<p>先看最简单的例子 A=diag(3,1)。它的 SVD 可以直接写成：</p>
+<div class="math-equation" role="group" aria-label="对角矩阵的一个 SVD"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="对角矩阵的一个 SVD，可横向滚动"><math display="block" aria-label="对角矩阵的一个 SVD"><mrow><mi>A</mi><mo>=</mo><mo>(</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>)</mo><mo>(</mo><mtable><mtr><mtd><mn>3</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>)</mo><mo>(</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>)</mo></mrow></math></div></div>
+<p>单位圆经过 A 后变成半轴长度分别为 3 和 1 的椭圆。第一主方向被拉长三倍，第二方向拉长一倍。若只保留第一方向，得到秩为 1 的近似矩阵 diag(3,0)。</p>
+<p>一般地，把前 k 个奇异值和奇异向量保留下来，得到 Aₖ。它是在所有秩不超过 k 的矩阵中，对 A 的最佳低秩近似（Eckart–Young 定理）。Frobenius 范数误差为：</p>
+<div class="math-equation" role="group" aria-label="截断 SVD 的 Frobenius 误差"><div class="math-scroll" data-math-scroll tabindex="0" role="region" aria-label="截断 SVD 的 Frobenius 误差，可横向滚动"><math display="block" aria-label="截断 SVD 的 Frobenius 误差"><mrow><msub><mrow><mo>‖</mo><mi>A</mi><mo>−</mo><msub><mi>A</mi><mi>k</mi></msub><mo>‖</mo></mrow><mi>F</mi></msub><mo>=</mo><msqrt><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mi>r</mi></munderover><msubsup><mi>σ</mi><mi>i</mi><mn>2</mn></msubsup></msqrt></mrow></math></div></div>
+<div class="proof"><span class="label">交叉验证</span>对角例子 σ₁=3、σ₂=1。保留 k=1 时，误差为 √(1²)=1，恰好等于被丢弃的第二个伸缩方向。若保留两个方向，误差为 0，恢复原矩阵。</div>
+<h3>与数据分析的联系</h3><p>对中心化的数据矩阵 X 做 SVD，右奇异向量给出变量空间中的正交方向，奇异值大小反映数据沿这些方向的变化尺度。这与 PCA 的主成分方向密切相关；具体协方差缩放取决于是否使用 1/n 或 1/(n−1) 的约定。</p>
+</section>
+<section id="demo"><h2>交互实验：控制椭圆的短轴</h2>
+<p>固定第一奇异值 σ₁=3，拖动第二奇异值 σ₂。短轴变短时，椭圆逐渐趋向线段；σ₂=0 时矩阵的秩降为 1。</p>
+<div class="interactive" data-demo="svd"><h3>奇异值实验室</h3><label class="control">第二奇异值 σ₂ <input type="range" name="sigma" min="0" max="2" step=".05" value="1"></label>
+<svg class="demo-svg" viewBox="0 0 360 240" role="img" aria-label="奇异值控制椭圆短轴长度"><path d="M25 120H340M180 220V20" stroke="#64777c" stroke-width="1.5"/><ellipse id="svd-ellipse" cx="180" cy="120" rx="115" ry="54" fill="#e7f3ef" stroke="#147d78" stroke-width="3"/><path d="M180 120H295M180 120V66" stroke="#c7684b" stroke-width="2"/></svg>
+<p class="output" data-output="svd">σ₁ = 3，σ₂ = 1.00</p></div>
+</section>
+<section id="limits"><h2>边界与易错点</h2><ul><li><strong>SVD 对任意实矩阵都存在。</strong> 特征分解则要求方阵，且对角化需要足够多线性无关的特征向量。</li><li><strong>奇异值非负。</strong> 它们是伸缩尺度，不表示方向翻转。</li><li><strong>左右奇异向量属于不同空间。</strong> V 的列在输入空间 Rⁿ，U 的列在输出空间 Rᵐ。</li><li><strong>低秩近似不是无损压缩。</strong> 截断奇异值会带来可计算的误差。</li></ul></section>
+<section id="exercise"><h2>自测：读出低秩近似误差</h2><div class="exercise"><details><summary>题目：奇异值为 5、2、1，只保留前两个方向，Frobenius 误差是多少？</summary><div class="answer">误差是被舍弃奇异值平方和的平方根，即 √(1²)=1。</div></details></div>
+<div class="exercise"><details><summary>题目：为什么 SVD 比特征分解更普遍？</summary><div class="answer">SVD 适用于任意 m×n 实矩阵；而普通特征值问题要求方阵，且未必有足够的实特征向量形成一组基。</div></details></div></section>
+<section id="references"><h2>延伸阅读</h2><ul><li><a href="https://www-math.mit.edu/~gs/LectureNotes/">Gilbert Strang：Lecture Notes for Linear Algebra，Singular Values and Vectors</a></li><li><a href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">MIT 18.06：Singular Value Decomposition 相关讲义与课程材料</a></li><li><a href="https://hefferon.net/linearalgebra/">Jim Hefferon：Linear Algebra</a></li></ul></section>
+<nav class="article-nav" aria-label="模块导航"><a href="../07-least-squares/index.html"><small>上一模块</small>正交投影与最小二乘</a><span></span></nav>
+</main></div>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · 08 / 08</span><span><a href="../../index.html">返回课程首页</a> · <a href="../../references/reading-map.md">参考资料</a></span></div></footer>
+<script src="../../assets/js/site.js" defer></script></body></html>
