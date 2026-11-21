@@ -14,7 +14,7 @@ This repository is a Chinese undergraduate linear-algebra teaching site. Use the
 6. **Make interaction optional.** The static page must remain mathematically complete if JavaScript is disabled. Controls must update a visible mathematical state and have accessible labels.
 7. **Cross-check.** Use at least two of: symbolic derivation, direct substitution, dimension/rank check, geometric interpretation, independent numerical computation, counterexample.
 8. **Maintain the verification ledger.** Keep `references/verification-matrix.md` aligned with worked examples; update exact computations when article examples change.\n9. **Cite learning sources.** Cite MIT 18.06 / Hefferon / other primary educational sources where appropriate. Do not imply a source contains an original illustration or proof that was independently created here.
-10. **Validate before publishing.** Run `python3 scripts/validate_site.py` and `python3 -m unittest discover -s tests -v`. Review the actual rendered page at desktop and mobile widths before claiming browser QA.
+10. **Validate before publishing.** Run `python3 scripts/validate_site.py`, `python3 -m unittest discover -s tests -v`, and (after installing `requirements-dev.txt` plus Chromium) `python3 scripts/browser_smoke.py`. Review screenshots before claiming visual QA.
 
 ## Content standards
 
@@ -39,4 +39,4 @@ This repository is a Chinese undergraduate linear-algebra teaching site. Use the
 
 ## Release gate
 
-A successful static check is not the same as browser QA. Report each check as passed, failed, or not verified. Do not claim GitHub Pages is live until the Actions deployment succeeds and the public URL is opened successfully.
+A successful static check is not the same as browser QA. Report each check as passed, failed, or not verified. Do not claim GitHub Pages is live until the Actions deployment succeeds and the workflow confirms its environment URL.
