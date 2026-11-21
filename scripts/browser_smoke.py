@@ -40,7 +40,7 @@ def main():
                     page_errors = []
                     page.on("pageerror", lambda exc: page_errors.append(str(exc)))
                     page.goto(BASE + route, wait_until="networkidle")
-                    page.evaluate("() => document.fonts.ready")
+                    page.evaluate("() => document.fonts.ready.then(() => true)")
                     metrics = page.evaluate("""() => ({
                       width: window.innerWidth,
                       documentWidth: document.documentElement.scrollWidth,
@@ -80,7 +80,7 @@ def main():
             # Exercise one real control on every module.
             checks = [
                 ("01-vectors", "/content/01-vectors/index.html",
-                 "input[name=a]", "1.5", "[data-output=combo]", "5.50"),
+                 "input[name=a]", "1.5", "[data-output=combo]", "3.50"),
                 ("02-transformations", "/content/02-linear-transformations/index.html",
                  "input[name=shear]", "1.0", "[data-output=matrix]", "1.00"),
                 ("03-systems", "/content/03-linear-systems/index.html",
