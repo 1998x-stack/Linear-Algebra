@@ -1,0 +1,30 @@
+{
+  "module": "14",
+  "title": "谱定理：用一组正交方向看懂对称矩阵",
+  "evidence": [
+    {
+      "id": "14-1",
+      "claim": "对称矩阵的正交特征向量。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-25-symmetric-matrices-and-positive-definiteness/index.html",
+      "locator": "课程主题或教材正文",
+      "status": "verified"
+    },
+    {
+      "id": "14-2",
+      "claim": "谱定理 S=QΛQᵀ 的条件与应用。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://math.mit.edu/~gs/LectureNotes/lafe_Matrix.pdf",
+      "locator": "课程主题或教材正文",
+      "status": "verified"
+    },
+    {
+      "id": "14-example",
+      "claim": "数值例子由独立代数计算复核。",
+      "kind": "derived",
+      "source_url": "../../references/verification-matrix.md",
+      "locator": "模块 14",
+      "status": "derived"
+    }
+  ]
+}
