@@ -1,0 +1,30 @@
+{
+  "module": "11",
+  "title": "正交矩阵：旋转与反射为何不改变长度",
+  "evidence": [
+    {
+      "id": "11-1",
+      "claim": "正交矩阵与正交基。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/orthogonality/orthogonal-matrices-and-gram-schmidt/",
+      "locator": "课程主题或教材正文",
+      "status": "verified"
+    },
+    {
+      "id": "11-2",
+      "claim": "QᵀQ=I 与矩阵分解。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/4d876a9159e32543eb0d73b4d4382f4c_MIT18_06S10ZoomNotes.pdf",
+      "locator": "课程主题或教材正文",
+      "status": "verified"
+    },
+    {
+      "id": "11-example",
+      "claim": "数值例子由独立代数计算复核。",
+      "kind": "derived",
+      "source_url": "../../references/verification-matrix.md",
+      "locator": "模块 11",
+      "status": "derived"
+    }
+  ]
+}

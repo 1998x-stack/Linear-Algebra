@@ -1,0 +1,30 @@
+{
+  "module": "12",
+  "title": "对称矩阵：为什么特征方向可以彼此垂直",
+  "evidence": [
+    {
+      "id": "12-1",
+      "claim": "实对称矩阵、正定性与特征值。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-25-symmetric-matrices-and-positive-definiteness/index.html",
+      "locator": "课程主题或教材正文",
+      "status": "verified"
+    },
+    {
+      "id": "12-2",
+      "claim": "实对称矩阵的谱分解与正交对角化。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://math.mit.edu/~gs/LectureNotes/lafe_Matrix.pdf",
+      "locator": "课程主题或教材正文",
+      "status": "verified"
+    },
+    {
+      "id": "12-example",
+      "claim": "数值例子由独立代数计算复核。",
+      "kind": "derived",
+      "source_url": "../../references/verification-matrix.md",
+      "locator": "模块 12",
+      "status": "derived"
+    }
+  ]
+}
