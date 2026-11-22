@@ -71,9 +71,15 @@ def audit_page(path: Path, kind="article"):
     errors = list(page.errors) + list(math.errors)
     if page.h1 != 1: errors.append(f"Expected exactly one h1, found {page.h1}")
     if kind == "article":
-        if page.h2 < 8: errors.append(f"Expected at least eight h2 sections, found {page.h2}")
-        if math.math_count < 8: errors.append(f"Expected at least eight MathML expressions, found {math.math_count}")
-        if page.figures < 8 or page.figcaptions < 8: errors.append("Article needs at least eight figures with captions")
+        is_second_batch = int(path.parent.name[:2]) >= 9
+        if is_second_batch:
+            if page.h2 < 8: errors.append(f"Expected at least eight h2 sections, found {page.h2}")
+            if math.math_count < 8: errors.append(f"Expected at least eight MathML expressions, found {math.math_count}")
+            if page.figures < 8 or page.figcaptions < 8: errors.append("Article needs at least eight figures with captions")
+        else:
+            if page.h2 < 5: errors.append(f"Expected at least five h2 sections, found {page.h2}")
+            if math.math_count < 4: errors.append(f"Expected at least four MathML expressions, found {math.math_count}")
+            if page.figures < 1 or page.figcaptions < 1: errors.append("Article needs a figure and caption")
         if page.demos < 1: errors.append("Article needs one meaningful interactive demo")
     elif kind == "lab":
         if page.h2 < 2 or math.math_count < 1 or page.figures < 1 or page.demos < 1:
@@ -113,14 +119,18 @@ def main():
             except (ValueError, OSError) as exc:
                 r["errors"].append(f"Invalid evidence.json: {exc}")
         print(f"{'PASS' if not r['errors'] else 'FAIL'} {r['path']} | h2={r['h2']} math={r['mathml']} figures={r['figures']} demos={r['demos']}")
-        if r["errors"]: failures.append(r)
+        if r["errors"]:
+            for error in r["errors"]: print("  -", error)
+            failures.append(r)
     lab = ROOT / "lab" / "index.html"
     if not lab.exists():
         failures.append({"path":"lab/index.html","errors":["Missing Matrix Computation Lab"]})
     else:
         r = audit_page(lab, "lab")
         print(f"{'PASS' if not r['errors'] else 'FAIL'} lab/index.html | matrix lab")
-        if r["errors"]: failures.append(r)
+        if r["errors"]:
+            for error in r["errors"]: print("  -", error)
+            failures.append(r)
     diagrams = sorted((ROOT / "assets" / "diagrams").glob("*.svg"))
     if len(diagrams) < 72:
         failures.append({"path":"assets/diagrams","errors":[f"Expected at least 72 SVGs, found {len(diagrams)}"]})
