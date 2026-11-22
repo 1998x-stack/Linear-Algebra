@@ -1,0 +1,38 @@
+{
+  "module": "15",
+  "title": "PCA：找到数据变化最大的方向",
+  "evidence": [
+    {
+      "id": "15-1",
+      "claim": "PCA 使用中心化数据的 SVD，主轴与右奇异向量对应。",
+      "kind": "curriculum-or-official-implementation-reference",
+      "source_url": "https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "15-2",
+      "claim": "解释方差、中心化与白化的实现说明。",
+      "kind": "curriculum-or-official-implementation-reference",
+      "source_url": "https://scikit-learn.org/stable/modules/decomposition.html",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "15-3",
+      "claim": "SVD 与数据低维表示。",
+      "kind": "curriculum-or-official-implementation-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-29-singular-value-decomposition/",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "15-example",
+      "claim": "本文教学样例的数值可由 verification matrix 和交互计算独立复核。",
+      "kind": "derived",
+      "source_url": "../../references/verification-matrix.md",
+      "locator": "模块 15",
+      "status": "derived"
+    }
+  ]
+}

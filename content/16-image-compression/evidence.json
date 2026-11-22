@@ -1,0 +1,38 @@
+{
+  "module": "16",
+  "title": "图像压缩：SVD 如何用少量方向重建像素",
+  "evidence": [
+    {
+      "id": "16-1",
+      "claim": "用 SVD 重建图像并观察低秩近似。",
+      "kind": "curriculum-or-official-implementation-reference",
+      "source_url": "https://numpy.org/numpy-tutorials/tutorial-svd/",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "16-2",
+      "claim": "SVD 的矩阵形状与重建约定。",
+      "kind": "curriculum-or-official-implementation-reference",
+      "source_url": "https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "16-3",
+      "claim": "SVD 与图像压缩课程主题。",
+      "kind": "curriculum-or-official-implementation-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-31-linear-transformations-and-their-matrices/",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "16-example",
+      "claim": "本文教学样例的数值可由 verification matrix 和交互计算独立复核。",
+      "kind": "derived",
+      "source_url": "../../references/verification-matrix.md",
+      "locator": "模块 16",
+      "status": "derived"
+    }
+  ]
+}
