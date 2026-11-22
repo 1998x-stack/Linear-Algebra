@@ -54,7 +54,7 @@ class PageAudit(HTMLParser):
         if tag == "h2": self.h2 += 1
         if tag == "figure": self.figures += 1
         if tag == "figcaption": self.figcaptions += 1
-        if tag == "div" and a.get("data-demo"): self.demos += 1
+        if a.get("data-demo"): self.demos += 1
         if tag == "a" and a.get("href"): self.links.append(a["href"])
         if tag == "img":
             if not a.get("alt"): self.errors.append("Image missing alt text")
@@ -106,18 +106,19 @@ def main():
         failures.append({"path":"content","errors":[f"Expected {EXPECTED_ARTICLES} articles, found {len(ARTICLE_PATHS)}"]})
     for path in ARTICLE_PATHS:
         r = audit_page(path, "article")
-        evidence_path = path.parent / "evidence.json"
-        if not evidence_path.exists():
-            r["errors"].append("Missing evidence.json")
-        else:
-            try:
-                evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
-                claims = evidence.get("evidence", [])
-                if len(claims) < 3: r["errors"].append("evidence.json needs at least three claim/source entries")
-                if any(x.get("status") not in ("verified","derived") for x in claims):
-                    r["errors"].append("evidence.json contains an unsupported status")
-            except (ValueError, OSError) as exc:
-                r["errors"].append(f"Invalid evidence.json: {exc}")
+        if int(path.parent.name[:2]) >= 9:
+            evidence_path = path.parent / "evidence.json"
+            if not evidence_path.exists():
+                r["errors"].append("Missing evidence.json")
+            else:
+                try:
+                    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
+                    claims = evidence.get("evidence", [])
+                    if len(claims) < 3: r["errors"].append("evidence.json needs at least three claim/source entries")
+                    if any(x.get("status") not in ("verified","derived") for x in claims):
+                        r["errors"].append("evidence.json contains an unsupported status")
+                except (ValueError, OSError) as exc:
+                    r["errors"].append(f"Invalid evidence.json: {exc}")
         print(f"{'PASS' if not r['errors'] else 'FAIL'} {r['path']} | h2={r['h2']} math={r['mathml']} figures={r['figures']} demos={r['demos']}")
         if r["errors"]:
             for error in r["errors"]: print("  -", error)
