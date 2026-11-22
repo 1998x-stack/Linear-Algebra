@@ -24,7 +24,7 @@ class MathAudit(HTMLParser):
             if not attrs.get("aria-label") and not attrs.get("aria-labelledby"):
                 self.errors.append("MathML without accessible description")
             if attrs.get("display") == "block":
-                if not any(t == "div" and ("data-math-scroll" in a or "math-scroll" in a.get("class", "").split()) for t, a in self.stack):
+                if not any(t == "div" and ("data-math-scroll" in a or "math-scroll" in a.get("class", "").split()) for t, _, a in self.stack):
                     self.errors.append("Display MathML outside a keyboard-scrollable region")
         if not self.inside_math:
             self.stack.append((tag, 0 if tag in self.ARITY else None, attrs))
