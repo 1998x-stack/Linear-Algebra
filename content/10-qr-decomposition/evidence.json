@@ -1,0 +1,30 @@
+{
+  "module": "10",
+  "title": "QR 分解：把列向量变成正交坐标",
+  "evidence": [
+    {
+      "id": "10-1",
+      "claim": "正交矩阵、Gram–Schmidt 与 QR。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/orthogonality/orthogonal-matrices-and-gram-schmidt/",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "10-2",
+      "claim": "QR、列正交基与 Householder 过程。",
+      "kind": "curriculum-or-theorem-reference",
+      "source_url": "https://math.mit.edu/~gs/LectureNotes/lafe_Matrix.pdf",
+      "locator": "课程主题或官方文档正文",
+      "status": "verified"
+    },
+    {
+      "id": "10-example",
+      "claim": "本文计算例子可由 references/verification-matrix.md 独立复核。",
+      "kind": "derived",
+      "source_url": "../../references/verification-matrix.md",
+      "locator": "模块 10",
+      "status": "derived"
+    }
+  ]
+}
