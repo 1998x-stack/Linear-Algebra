@@ -8,16 +8,16 @@
 </head>
 <body>
 <a class="skip-link" href="#main">跳到课程内容</a>
-<header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="#course">课程</a><a href="#path">学习路径</a><a href="#method">学习方法</a><a href="README.md">仓库说明</a></nav></div></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav" aria-label="主导航"><a href="#course">课程</a><a href="#path">学习路径</a><a href="#method">学习方法</a><a href="lab/index.html">矩阵实验室</a><a href="README.md">仓库说明</a></nav></div></header>
 <main id="main" class="home-shell">
 <section class="home-hero">
 <span class="kicker">VISUAL · RIGOROUS · INTERACTIVE</span>
 <h1>让线性代数<br>变得看得见。</h1>
-<p>从一个向量开始，逐步理解矩阵如何变换空间、方程组如何确定解、特征方向如何显现，最后看见 SVD 如何拆解复杂变换。</p>
+<p>从向量、线性方程组到矩阵分解、谱理论与数据应用。通过图解、公式和可操作实验，把抽象结构变成可检查的计算。</p>
 <div class="hero-equation"><span>核心问题</span><math class="math-inline" aria-label="A x 等于 b"><mrow><mi>A</mi><mi>x</mi><mo>=</mo><mi>b</mi></mrow></math><span>几何、代数与计算的交汇点</span></div>
 </section>
 <section id="course" class="home-section">
-<h2>八个模块，一条完整学习路线</h2>
+<h2>十六个模块，两条相连的学习路线</h2>
 <p class="lead">先建立几何直觉，再建立代数语言；先理解结构，再学习计算。每篇都有独立图示、公式推导、例题、交互实验和自测。</p>
 <div class="module-grid">
 <a class="module-card" href="content/01-vectors/index.html"><span class="module-number">MODULE 01 · FOUNDATIONS</span><h3>向量与线性组合</h3><p>向量不只是数字列表；线性组合让我们描述可达的方向与位置。</p><div class="question">哪些点可以由给定向量组合得到？ →</div></a>
@@ -30,6 +30,23 @@
 <a class="module-card" href="content/08-svd/index.html"><span class="module-number">MODULE 08 · DECOMPOSITION</span><h3>奇异值分解与低秩近似</h3><p>任何实矩阵都能拆成两次正交变换与一次轴向伸缩。</p><div class="question">如何拆解一个复杂的线性变换？ →</div></a>
 </div>
 </section>
+
+<section id="decomposition" class="home-section">
+<h2>第二条路线：矩阵分解与数据应用</h2>
+<p>从消元与正交化开始，走向对称矩阵、谱定理，再把 PCA 与 SVD 用到数据降维和图像近似。</p>
+<div class="module-grid">
+<a class="module-card" href="content/09-lu-decomposition/index.html"><span class="module-number">MODULE 09 · FACTORIZATION</span><h3>LU 分解</h3><p>把消元乘子和上三角结果保存为两个可复用的矩阵。</p><div class="question">为什么一次分解可以服务多个右端项？ →</div></a>
+<a class="module-card" href="content/10-qr-decomposition/index.html"><span class="module-number">MODULE 10 · ORTHOGONALIZATION</span><h3>QR 分解</h3><p>用 Gram–Schmidt 和正交基重写列空间，连接最小二乘。</p><div class="question">为什么正交坐标让计算更稳？ →</div></a>
+<a class="module-card" href="content/11-orthogonal-matrices/index.html"><span class="module-number">MODULE 11 · GEOMETRY</span><h3>正交矩阵</h3><p>理解旋转、反射、长度保持与正交投影。</p><div class="question">哪些变换不会改变距离？ →</div></a>
+<a class="module-card" href="content/12-symmetric-matrices/index.html"><span class="module-number">MODULE 12 · STRUCTURE</span><h3>对称矩阵</h3><p>从 Aᵀ=A 推出实特征值和正交特征方向。</p><div class="question">为什么主轴能够互相垂直？ →</div></a>
+<a class="module-card" href="content/13-positive-definite-quadratic-forms/index.html"><span class="module-number">MODULE 13 · OPTIMIZATION</span><h3>正定矩阵与二次型</h3><p>用椭圆、曲率、Sylvester 判据和 Cholesky 理解正定。</p><div class="question">如何判断所有非零方向都为正？ →</div></a>
+<a class="module-card" href="content/14-spectral-theorem/index.html"><span class="module-number">MODULE 14 · SPECTRAL THEORY</span><h3>谱定理</h3><p>用正交特征基把对称矩阵拆成独立方向伸缩。</p><div class="question">何时能把矩阵变成对角伸缩？ →</div></a>
+<a class="module-card" href="content/15-principal-component-analysis/index.html"><span class="module-number">MODULE 15 · DATA</span><h3>主成分分析 PCA</h3><p>找到数据方差最大的方向，理解投影、重建和解释方差。</p><div class="question">如何保留最重要的数据变化？ →</div></a>
+<a class="module-card" href="content/16-image-compression/index.html"><span class="module-number">MODULE 16 · APPLICATION</span><h3>SVD 图像压缩</h3><p>把像素矩阵拆成秩一模式，用少量奇异值近似重建。</p><div class="question">少量数字如何近似一张图？ →</div></a>
+</div>
+<p class="lead"><a href="lab/index.html">打开 Matrix Computation Lab →</a>：输入 2×2 或 3×3 矩阵，检查 LU、QR、特征值、Cholesky 与奇异值。</p>
+</section>
+
 <section id="path" class="home-section">
 <h2>知识之间如何连接</h2>
 <p>前四篇回答“矩阵能做什么、解在哪里、空间有多大”；后四篇回答“变换如何改变体积、哪些方向特殊、如何逼近与压缩”。</p>

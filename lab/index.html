@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="输入小型矩阵，交互检查 LU、QR、特征值、Cholesky 与 SVD。">
+<title>Matrix Computation Lab · Linear Algebra</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<script defer src="../assets/js/matrix-lab.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../index.html"><span class="brand-mark">LA</span><span>Linear Algebra</span></a><nav class="header-nav"><a href="../index.html">课程首页</a><a href="../README.md">项目说明</a></nav></div></header>
+<main id="main" class="home-shell">
+<section class="home-hero"><span class="kicker">MATRIX COMPUTATION LAB</span><h1>让矩阵分解<br>可以亲手验证。</h1><p>输入一个 2×2 或 3×3 实矩阵。实验室会计算带部分选主元的 LU、Modified Gram–Schmidt QR、对称特征值、Cholesky 和奇异值，并报告适用条件。</p>
+<div class="hero-equation"><span>统一入口</span><math class="math-inline" aria-label="A 等于 LU，A 等于 QR，A 等于 U Sigma V 转置"><mrow><mi>A</mi><mo>=</mo><mi>L</mi><mi>U</mi><mo>;</mo><mi>A</mi><mo>=</mo><mi>Q</mi><mi>R</mi><mo>;</mo><mi>A</mi><mo>=</mo><mi>U</mi><mi>Σ</mi><msup><mi>V</mi><mi>T</mi></msup></mrow></math></div>
+</section>
+<div class="lab-grid">
+<section class="interactive" data-demo="matrix-lab">
+<h2>输入矩阵</h2>
+<p>每行输入一行元素，使用空格或逗号分隔。仅支持方阵 2×2 或 3×3；小数可用十进制表示。</p>
+<label for="matrix-input"><strong>矩阵 A</strong></label>
+<textarea class="lab-input" id="matrix-input" spellcheck="false">4 2 0
+2 3 1
+0 1 2</textarea>
+<p class="lab-hint">默认示例是实对称正定矩阵。可尝试把第一行第一列改成 0，观察 LU 的行交换；或输入非对称矩阵，观察对称特征值与 Cholesky 检查被跳过。</p>
+<button class="lab-button" id="run-lab" type="button">计算并验证</button>
+</section>
+<section>
+<h2>计算报告</h2>
+<pre class="lab-output" id="lab-result" aria-live="polite">等待计算。默认矩阵的计算结果将在点击“计算并验证”后显示。</pre>
+</section>
+</div>
+<figure><img src="../assets/diagrams/matrix-lab.svg" alt="矩阵计算实验室的五步流程：输入矩阵、分解、检查结构、验证残差、读取结果。"><figcaption>同一输入矩阵会经过不同分解路径。每种分解都有自己的前提，实验室会明确标注不适用的情况，而不是强行输出结果。</figcaption></figure>
+<section class="home-section">
+<h2>实验室在做什么</h2>
+<ul>
+<li><strong>LU：</strong>部分选主元，返回 P、L、U，并检查 PA−LU 的残差。</li>
+<li><strong>QR：</strong>Modified Gram–Schmidt，检查 QᵀQ 是否接近单位矩阵，以及 QR−A 的残差。</li>
+<li><strong>对称特征值：</strong>仅当 A≈Aᵀ 时运行 Jacobi 旋转；输出排序后的实特征值。</li>
+<li><strong>Cholesky：</strong>仅对对称正定矩阵执行 A=LLᵀ。</li>
+<li><strong>SVD：</strong>通过 AᵀA 的对称特征问题计算奇异值；说明这是教学规模算法，不替代生产级数值库。</li>
+</ul>
+<p>数值容差用于判断浮点近似相等；“接近零”不等于符号计算中的严格等于零。大型、稀疏或病态矩阵应使用专业数值线性代数库。</p>
+</section>
+</main>
+<footer class="site-footer"><div class="footer-inner"><span>Linear Algebra · Matrix Computation Lab</span><a href="../index.html">返回课程首页</a></div></footer>
+</body></html>

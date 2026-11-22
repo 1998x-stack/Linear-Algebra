@@ -131,3 +131,12 @@ code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.9em}
  .math-scroll,[data-math-scroll]{overflow:visible}
  a{color:#164e54}
 }
+
+/* Matrix computation lab */
+.lab-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:1rem;align-items:start;margin:1.5rem 0}
+.lab-input{display:block;width:100%;min-height:150px;resize:vertical;padding:.8rem;border:1px solid var(--line);border-radius:.65rem;background:#fff;color:var(--ink);font: .95rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace}
+.lab-output{min-height:290px;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:1rem;background:#1e3038;color:#edf5f0;border-radius:.75rem;font:.84rem/1.7 ui-monospace,SFMono-Regular,Consolas,monospace}
+.lab-button{border:1px solid var(--teal);border-radius:.55rem;background:var(--teal);color:#fff;padding:.55rem 1rem;font-weight:750;cursor:pointer}
+.lab-button:hover{filter:brightness(.94)}
+.lab-hint{font-size:.85rem;color:var(--muted)}
+@media(max-width:760px){.lab-grid{grid-template-columns:1fr}.lab-output{min-height:220px}}
