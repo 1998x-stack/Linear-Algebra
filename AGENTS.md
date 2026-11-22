@@ -41,3 +41,15 @@ This repository is a Chinese undergraduate linear-algebra teaching site. Use the
 ## Release gate
 
 A successful static check is not the same as browser QA. Report each check as passed, failed, or not verified. Do not claim GitHub Pages is live until the Actions deployment succeeds and the workflow confirms its environment URL.
+
+
+## Second-batch content and verification rules
+
+- The course now has sixteen numbered modules. Keep the progression coherent: LU → QR → orthogonal matrices → symmetric matrices → positive definiteness → spectral theorem → PCA → SVD image compression.
+- Every new module must contain eight substantial sections, at least eight original SVG figures, at least eight accessible MathML display equations, one meaningful interactive experiment, and one self-check.
+- Each module directory must include an evidence.json ledger. Separate theorem/course references from calculations independently derived for the worked example; use verified only for claims checked against the cited source and derived for calculations reproduced in the verification matrix.
+- Every figure must have a useful Chinese alt description in the HTML and a title plus desc in the SVG. Avoid generic decorative figures; each diagram must explain a specific step, geometry, comparison, or data structure.
+- Cross-check numerical examples independently: multiply factors back, substitute solutions, verify orthogonality, check dimensions, compute determinant/eigenvalue signs, and report residuals where relevant.
+- Keep the Matrix Computation Lab explicitly educational and bounded to 2×2/3×3 matrices. Do not describe its Jacobi/Gram–Schmidt implementations as production-grade replacements for LAPACK, NumPy, or SciPy.
+- When changing an example, update its article, evidence.json, references/verification-matrix.md, Python regression tests, and browser interaction expectation in the same change.
+- Before release run scripts/validate_site.py, unittest discovery, and scripts/browser_smoke.py after installing Chromium. Inspect desktop and mobile screenshots, not just test exit codes.

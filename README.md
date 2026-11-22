@@ -17,6 +17,21 @@
 | [07 正交投影与最小二乘](content/07-least-squares/) | 内积、投影、Gram–Schmidt、最小二乘 | 如何找到离数据最近的可行解？ |
 | [08 奇异值分解与低秩近似](content/08-svd/) | SVD、奇异值、压缩、PCA 联系 | 如何把任意线性变换拆成旋转与伸缩？ |
 
+## 第二批模块（09–16）
+
+| 模块 | 主题 | 核心问题 |
+|---|---|---|
+| 09 | [LU 分解](content/09-lu-decomposition/index.html) | 如何把消元过程保存并复用？ |
+| 10 | [QR 分解](content/10-qr-decomposition/index.html) | 如何把列空间写成正交坐标？ |
+| 11 | [正交矩阵](content/11-orthogonal-matrices/index.html) | 为什么旋转与反射保持长度？ |
+| 12 | [对称矩阵](content/12-symmetric-matrices/index.html) | 为什么特征方向可以正交？ |
+| 13 | [正定矩阵与二次型](content/13-positive-definite-quadratic-forms/index.html) | 如何判断所有非零方向都为正？ |
+| 14 | [谱定理](content/14-spectral-theorem/index.html) | 何时能正交对角化？ |
+| 15 | [PCA](content/15-principal-component-analysis/index.html) | 如何保留数据中最大的变化？ |
+| 16 | [SVD 图像压缩](content/16-image-compression/index.html) | 如何用低秩模式近似像素矩阵？ |
+
+**统一实验室：** [Matrix Computation Lab](lab/index.html) 支持 2×2 / 3×3 矩阵，提供带主元 LU、Modified Gram–Schmidt QR、对称 Jacobi 特征值、Cholesky 和教学级奇异值计算。它明确标注适用条件，不把教学实现冒充生产级数值库。
+
 ## 如何学习
 
 1. 先阅读每篇开头的问题，不急着背公式。
@@ -83,7 +98,9 @@ python3 scripts/browser_smoke.py
 1. Gilbert Strang, MIT OpenCourseWare, [18.06 Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/). 课程覆盖消元、四个基本子空间、正交投影、行列式和特征值等主题。
 2. Jim Hefferon, [Linear Algebra](https://hefferon.net/linearalgebra/). 免费本科教材，包含线性方程组、向量空间、线性映射、行列式和特征值。
 3. 3Blue1Brown, [Essence of Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra). 作为视觉教学方法参考；本项目独立绘制图形并独立撰写讲解。
-4. Kenji Hiranabe, [The Art of Linear Algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra). 以矩阵分解为主线的图解参考。\n5. Fabio Furini, [Linear Algebra lecture notes and computation lab](https://fabiofurini.github.io/linear-algebra/). 逐步计算与精确算术交互实验参考。\n6. NIST Digital Library of Mathematical Functions, [About MathML](https://dlmf.nist.gov/help/mathml). MathML 与浏览器数学呈现说明。
+4. Kenji Hiranabe, [The Art of Linear Algebra](https://github.com/kenjihiranabe/The-Art-of-Linear-Algebra). 以矩阵分解为主线的图解参考。
+5. Fabio Furini, [Linear Algebra lecture notes and computation lab](https://fabiofurini.github.io/linear-algebra/). 逐步计算与精确算术交互实验参考。
+6. NIST Digital Library of Mathematical Functions, [About MathML](https://dlmf.nist.gov/help/mathml). MathML 与浏览器数学呈现说明。
 
 ## 发布
 

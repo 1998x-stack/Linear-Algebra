@@ -41,3 +41,15 @@ Gilbert Strang's [MIT OCW 18.06SC Linear Algebra (Fall 2011)](https://ocw.mit.ed
 - Worked examples are explicitly labeled as constructed examples.
 - No empirical performance claims are made in this course. Any numerical output is calculated from the displayed matrix or data.
 - If a convention differs across sources (for example, row-vectors versus column-vectors in a data matrix), state the convention at the point of use.
+
+
+## Second batch: matrix factorizations, spectral theory and data applications
+
+- MIT OpenCourseWare, [Factorization into A = LU](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/ax-b-and-the-four-subspaces/factorization-into-a-lu/): elimination multipliers, triangular factors and pivoting context.
+- MIT OpenCourseWare, [Orthogonal Matrices and Gram–Schmidt](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/orthogonality/orthogonal-matrices-and-gram-schmidt/): orthonormal bases, orthogonal matrices and QR foundations.
+- MIT OpenCourseWare, [Symmetric Matrices and Positive Definiteness](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-25-symmetric-matrices-and-positive-definiteness/index.html) and [Positive Definite Matrices and Minima](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-27-positive-definite-matrices-and-minima/): spectral structure, positive definiteness and optimization.
+- MIT OpenCourseWare, [Singular Value Decomposition](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/resources/lecture-29-singular-value-decomposition/): SVD and low-rank structure.
+- NumPy, [SVD tutorial](https://numpy.org/numpy-tutorials/tutorial-svd/) and [numpy.linalg.svd API](https://numpy.org/doc/stable/reference/generated/numpy.linalg.svd.html): implementation conventions and image reconstruction.
+- scikit-learn, [PCA API reference](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html): centering, singular-value solver and explained-variance conventions.
+
+The Matrix Computation Lab intentionally implements only small teaching examples. It reports preconditions and residuals, and does not claim parity with production LAPACK-backed libraries.
